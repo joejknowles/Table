@@ -1,0 +1,19 @@
+{
+  "name": "table",
+  "version": "1.0.0",
+  "description": "multi screen table games",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joejknowles/Table.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/joejknowles/Table/issues"
+  },
+  "homepage": "https://github.com/joejknowles/Table#readme"
+}
