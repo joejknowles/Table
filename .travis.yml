@@ -1,0 +1,11 @@
+language:
+  - node_js
+node_js:
+  - node
+  - "6.1"
+  - "7.2.1"
+install:
+  - cd client
+  - npm install
+script:
+  - npm test
