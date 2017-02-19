@@ -4,7 +4,8 @@
   "description": "multi screen table games",
   "main": "server.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,9 @@
   "homepage": "https://github.com/joejknowles/Table#readme",
   "dependencies": {
     "express": "^4.14.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1"
   }
 }
