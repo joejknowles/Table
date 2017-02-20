@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "test",
-    "test-client": "npm run test --prefix client",
     "start": "node server.js",
+    "test-client": "npm run test --prefix client",
+    "start-client": "npm run start --prefix client",
     "build": "npm run build --prefix client"
   },
   "repository": {
