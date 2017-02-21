@@ -10,4 +10,6 @@ const server = app.listen(app.get('port'), () => {
   console.log(`Express listening at: http://localhost:${app.get('port')}/`);
 });
 
-export default server;
+module.exports = {
+  server: server
+};

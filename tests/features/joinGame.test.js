@@ -1,4 +1,4 @@
-import server from '../../app/server';
+import { server } from '../../app/server';
 import createBrowser from '../browser/phantom';
 
 let browser;
