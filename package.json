@@ -32,6 +32,8 @@
     "jest": "^18.1.0"
   },
   "jest": {
-    "testPathDirs": ["src/"]
+    "testPathDirs": [
+      "tests/"
+    ]
   }
 }
