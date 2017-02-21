@@ -1,0 +1,1 @@
+exports[`test app is the same 1`] = `"{\"domain\":null,\"_events\":{},\"_eventsCount\":3,\"_connections\":0,\"_handle\":null,\"_usingSlaves\":false,\"_slaves\":[],\"_unref\":false,\"allowHalfOpen\":true,\"pauseOnConnect\":false,\"httpAllowHalfOpen\":false,\"timeout\":120000,\"_pendingResponseData\":0,\"_connectionKey\":\"6::::3001\"}"`;
