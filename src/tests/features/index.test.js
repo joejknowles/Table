@@ -1,4 +1,5 @@
-import app from '../../server';
+import server from '../../server';
 
-it('app is the same', () => expect(JSON.stringify(app)).toMatchSnapshot());
- app.close();
+it('server is listening', () => expect(server.listening).toBe(true));
+
+afterAll(() => server.close());
