@@ -2,10 +2,10 @@
   "name": "table",
   "version": "1.0.0",
   "description": "multi screen table games",
-  "main": "src/server.js",
+  "main": "app/server.js",
   "scripts": {
     "test": "jest",
-    "start": "node src/server.js",
+    "start": "node app/server.js",
     "test-client": "npm run test --prefix client",
     "start-client": "npm run start --prefix client",
     "build": "npm run build --prefix client"
