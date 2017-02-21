@@ -7,5 +7,7 @@ node_js:
 install:
   - cd client
   - npm install
+  - cd ..
 script:
+  - npm test-client
   - npm test
