@@ -1,6 +1,6 @@
 import { server } from '../../app/server';
 import createBrowser from '../browser/phantom';
-import * as res from '../../resources/pages/startScreen';
+import res from '../../client/src/resources/pages/startScreen';
 
 let browser;
 
