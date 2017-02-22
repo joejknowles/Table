@@ -1,7 +1,9 @@
 import { server } from '../../app/server';
 import createBrowser from '../browser/phantom';
+import * as res from '../../resources/pages/startScreen';
 
 let browser;
+
 beforeAll(async () =>{
   browser = await createBrowser();
 });
@@ -15,7 +17,7 @@ it('join game page matches snapshot', async () => {
 it('shows "join as player" button', async () => {
   await browser.visit('/');
   const playerJoinButton = await browser.find('.player-join-button');
-  expect(playerJoinButton.innerText).toBe('Join as player');
+  expect(playerJoinButton.innerText).toBe(res.playerJoinButton);
 });
 
 it('clicking "join as player" button shows a deck of cards', async () => {
