@@ -11,4 +11,4 @@ install:
   - cd ..
 script:
   - npm run test-client
-  - npm run test
+  - npm run test-ci

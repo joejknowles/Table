@@ -8,7 +8,8 @@
     "start": "node app/server.js",
     "test-client": "npm run test --prefix client",
     "start-client": "npm run start --prefix client",
-    "build": "npm run build --prefix client"
+    "build": "npm run build --prefix client",
+    "test-ci": "PORT=1234 jest"
   },
   "repository": {
     "type": "git",
