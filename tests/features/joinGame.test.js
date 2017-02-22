@@ -12,10 +12,17 @@ it('join game page matches snapshot', async () => {
   expect(content).toMatchSnapshot();
 });
 
-it('shows join as player button', async () => {
+it('shows "join as player" button', async () => {
   await browser.visit('/');
   const playerJoinButton = await browser.find('.player-join-button');
   expect(playerJoinButton.innerText).toBe('Join as player');
+});
+
+it('clicking "join as player" button shows a deck of cards', async () => {
+  await browser.visit('/');
+  const playerJoinButton = await browser.click('.player-join-button');
+  const cardDeck = await browser.find('.deck')
+  expect(cardDeck).not.toBe(null);
 });
 
 afterAll(async () => {
