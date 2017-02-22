@@ -5,7 +5,7 @@ export default async () => {
   const page = await instance.createPage();
 
   const port = process.env.PORT || 3001;
-  
+
   const visit = async (path) => {
     const status = await page.open(`http://localhost:${ port }${ path }`);
     return status;
@@ -19,9 +19,9 @@ export default async () => {
   const exit = async () => instance.exit();
 
   const find = async (selector) => {
-    const element = await page.evaluate(() => {
-      return document.querySelector(selector);
-    });
+    const element = await page.invokeMethod('evaluate', (selector) => (
+      document.querySelector(selector)
+    ), selector);
     if (!element) {
       throw `element with ${selector} selector not found`;
     }
