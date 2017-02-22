@@ -1,0 +1,15 @@
+exports[`test PlayerJoinButton renders as before 1`] = `
+<button
+  className="player-join-button"
+  onClick={[Function]}>
+  Join as player
+</button>
+`;
+
+exports[`test TableJoinButton renders as before 1`] = `
+<button
+  className="table-join-button"
+  onClick={[Function]}>
+  Join as table
+</button>
+`;

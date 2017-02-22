@@ -1,7 +1,0 @@
-exports[`test component renders as before 1`] = `
-<button
-  className="player-join-button"
-  onClick={[Function]}>
-  Join as player
-</button>
-`;

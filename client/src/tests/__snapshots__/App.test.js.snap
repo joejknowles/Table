@@ -24,5 +24,8 @@ exports[`test App renders as before 1`] = `
   <Route
     component={[Function]}
     path="/play" />
+  <Route
+    component={[Function]}
+    path="/table" />
 </Router>
 `;

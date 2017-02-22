@@ -1,4 +1,5 @@
 export default {
   startScreen: '/',
-  play: '/play'
+  play: '/play',
+  table: '/table'
 }
