@@ -1,5 +1,5 @@
 import { server } from '../../app/server';
-import createBrowser from '../browser/phantom';
+import createBrowser from '../browsers/phantom';
 import res from '../../client/src/resources/pages/startScreen';
 
 let browser;
