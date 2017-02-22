@@ -1,0 +1,6 @@
+exports[`test component renders as before 1`] = `
+<div
+  className="App">
+  <Unknown />
+</div>
+`;
