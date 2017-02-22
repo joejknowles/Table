@@ -14,7 +14,7 @@ it('join game page matches snapshot', async () => {
 
 it('shows join as player button', async () => {
   await browser.visit('/');
-  const playerJoinButton = await browser.find('.player-join-button')
+  const playerJoinButton = await browser.find('.player-join-button');
   expect(playerJoinButton.getText()).toBe('Join as a player');
 });
 
