@@ -19,18 +19,17 @@ export default async () => {
   const exit = async () => instance.exit();
 
   const find = async (selector) => {
-    const element = await page.invokeMethod('evaluate', (selector) => (
+    return await page.invokeMethod('evaluate', (selector) => (
       document.querySelector(selector)
     ), selector);
-    if (!element) {
-      throw `element with ${selector} selector not found`;
-    }
-    return element;
   };
 
   const click = async (selector) => {
-    await find(selector);
-    return await element.click();
+    const result = await page.invokeMethod('evaluate', (selector) => {
+      const element = document.querySelector(selector);
+      return element.click();
+    }, selector);
+    return result;
   };
 
   return {
