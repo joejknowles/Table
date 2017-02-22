@@ -4,8 +4,10 @@ export default async () => {
   const instance = await phantom.create()
   const page = await instance.createPage();
 
+  const port = process.env.PORT || 3001;
+  
   const visit = async (path) => {
-    const status = await page.open(`http://localhost:3001${ path }`);
+    const status = await page.open(`http://localhost:${ port }${ path }`);
     return status;
   };
 
