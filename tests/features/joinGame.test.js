@@ -21,8 +21,8 @@ it('shows "join as player" button', async () => {
 it('clicking "join as player" button shows a deck of cards', async () => {
   await browser.visit('/');
   const playerJoinButton = await browser.click('.player-join-button');
-  const cardDeck = await browser.find('.deck')
-  expect(cardDeck).not.toBe(null);
+  const cardDeck = await browser.find('.deck');
+  expect(cardDeck.className).toBe('.player-join-button');
 });
 
 afterAll(async () => {
