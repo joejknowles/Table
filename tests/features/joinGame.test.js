@@ -30,5 +30,5 @@ it('clicking "join as player" button shows a deck of cards', async () => {
 
 afterAll(async () => {
   await browser.exit();
-  server.close();
+  await server.close();
 });

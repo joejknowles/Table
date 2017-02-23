@@ -1,5 +1,9 @@
 import { server } from '../../app/server';
 
-it('server is listening', () => expect(server.listening).toBe(true));
+it('server is listening', async () => {
+  expect(server.listening).toBe(true)
+});
 
-afterAll(() => server.close());
+afterAll(async () => {
+  await server.close();
+});

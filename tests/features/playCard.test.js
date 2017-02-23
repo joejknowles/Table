@@ -1,22 +1,33 @@
-import { server } from '../../app/server';
-import createBrowser from '../browsers/phantom';
+ import { server } from '../../app/server';
+ import createBrowser from '../browsers/phantom';
 
-let tableBrowser;
-let playerBrowser;
+describe('concurrent phantom instances', async () => {
+  let tableBrowser;
+  let playerBrowser;
 
-beforeAll(async () =>{
-  tableBrowser = await createBrowser();
-  playerBrowser = await createBrowser();
-});
+  beforeAll(async () =>{
+    tableBrowser = await createBrowser();
+    playerBrowser = await createBrowser();
+  });
 
-it('test concurrent phantom instances', async () => {
-  await tableBrowser.visit('/table');
-  await playerBrowser.visit('/play');
-});
+  beforeEach(async () => {
+    await tableBrowser.visit('/table');
+    await playerBrowser.visit('/play');
+  });
 
+   it('loads table correctly', async () => {
+     const pile = await tableBrowser.find('.pile');
+     expect(pile.className).toBe('pile');
+   });
 
-afterAll(async () => {
-  await tableBrowser.exit();
-  await playerBrowser.exit();
-  server.close();
+  it('loads player correctly', async () => {
+    const cardDeck = await playerBrowser.find('.deck');
+    expect(cardDeck.className).toBe('deck');
+  });
+
+  afterAll(async () => {
+    await tableBrowser.exit();
+    await playerBrowser.exit();
+    await server.close();
+  });
 });
