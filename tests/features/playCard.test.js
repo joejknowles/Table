@@ -1,11 +1,12 @@
- import { server } from '../../app/server';
  import createBrowser from '../browsers/phantom';
 
 describe('concurrent phantom instances', async () => {
   let tableBrowser;
   let playerBrowser;
+  let server;
 
   beforeAll(async () =>{
+    server = require('../../app/server').server;
     tableBrowser = await createBrowser();
     playerBrowser = await createBrowser();
   });
@@ -29,5 +30,6 @@ describe('concurrent phantom instances', async () => {
     await tableBrowser.exit();
     await playerBrowser.exit();
     await server.close();
+    await server.on('close');
   });
 });

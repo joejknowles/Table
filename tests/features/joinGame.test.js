@@ -1,10 +1,11 @@
-import { server } from '../../app/server';
 import createBrowser from '../browsers/phantom';
 import res from '../../client/src/resources/pages/startScreen';
 
 let browser;
+let server;
 
 beforeAll(async () =>{
+  server = require('../../app/server').server;
   browser = await createBrowser();
 });
 
@@ -31,4 +32,6 @@ it('clicking "join as player" button shows a deck of cards', async () => {
 afterAll(async () => {
   await browser.exit();
   await server.close();
+  const thing = await server.on('close');
+  console.log(thing);
 });

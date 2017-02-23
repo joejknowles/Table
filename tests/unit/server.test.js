@@ -1,4 +1,6 @@
-import { server } from '../../app/server';
+let server;
+
+beforeEach(() => server = require('../../app/server').server);
 
 it('server is listening', async () => {
   expect(server.listening).toBe(true)
@@ -6,4 +8,5 @@ it('server is listening', async () => {
 
 afterAll(async () => {
   await server.close();
+  await server.on('close');
 });
