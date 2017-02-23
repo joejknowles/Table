@@ -1,9 +1,16 @@
 import { server } from '../../app/server';
+import supertest from "supertest";
 
-it('server is listening', async () => {
+const app = server;
+const request = supertest.agent(app.listen());
+
+it('server is listening', (done) => {
+  console.log(server.listening);
   expect(server.listening).toBe(true)
+  done();
 });
 
-afterAll(async () => {
-  await server.close();
+afterAll(async (done) => {
+  await request.close();
+  done()
 });

@@ -1,6 +1,10 @@
+import supertest from "supertest";
 import { server } from '../../app/server';
 import createBrowser from '../browsers/phantom';
 import res from '../../client/src/resources/pages/startScreen';
+
+const app = server;
+const request = supertest.agent(app.listen());
 
 let browser;
 
@@ -28,7 +32,8 @@ it('clicking "join as player" button shows a deck of cards', async () => {
   expect(cardDeck.className).toBe('pile');
 });
 
-afterAll(async () => {
-  await browser.exit();
-  await server.close();
+afterAll((done) => {
+  browser.exit();
+  request.close();
+  done();
 });

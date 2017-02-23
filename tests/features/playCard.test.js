@@ -1,5 +1,8 @@
- import { server } from '../../app/server';
- import createBrowser from '../browsers/phantom';
+import supertest from "supertest";
+import { server } from '../../app/server';
+import createBrowser from '../browsers/phantom';
+const app = server;
+const request = supertest.agent(app.listen());
 
 describe('concurrent phantom instances', async () => {
   let tableBrowser;
@@ -25,9 +28,10 @@ describe('concurrent phantom instances', async () => {
     expect(cardDeck.className).toBe('deck');
   });
 
-  afterAll(async () => {
+  afterAll(async (done) => {
     await tableBrowser.exit();
     await playerBrowser.exit();
-    await server.close();
+    await request.close();
+    done();
   });
 });
