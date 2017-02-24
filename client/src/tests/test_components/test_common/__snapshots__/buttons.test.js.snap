@@ -1,0 +1,15 @@
+exports[`test DispatchButton renders as before 1`] = `
+<button
+  className="test class"
+  onClick={[Function]}>
+  test res
+</button>
+`;
+
+exports[`test ToPathButton renders as before 1`] = `
+<button
+  className={undefined}
+  onClick={[Function]}>
+  test res
+</button>
+`;
