@@ -8,7 +8,7 @@ const tableProps = {
   class: "table-join-button"
 };
 
-export const TableJoinButton = ToPathButton(tableProps);
+export const TableJoinButton = () => ToPathButton(tableProps);
 
 const playerProps = {
   res: res.playerJoinButton,
@@ -16,4 +16,4 @@ const playerProps = {
   class: "player-join-button"
 };
 
-export const PlayerJoinButton = ToPathButton(playerProps);
+export const PlayerJoinButton = () => ToPathButton(playerProps);
