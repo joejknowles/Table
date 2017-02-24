@@ -1,5 +1,7 @@
-const cardsRemaining = (state = 1, action) => (
+import { combineReducers } from 'redux';
+
+export const cardsRemaining = (state = 1, action) => (
   action.type === 'PLAY_CARD' ? state - 1 : state
 );
 
-export default cardsRemaining;
+export default combineReducers({ cardsRemaining });

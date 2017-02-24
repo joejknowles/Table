@@ -1,4 +1,4 @@
-import cardsRemaining from '../../reducers';
+import { cardsRemaining } from '../../reducers';
 
 describe('cardsRemaining reducer', () => {
   it('defaults to one', () => (
