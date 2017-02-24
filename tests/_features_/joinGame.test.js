@@ -1,12 +1,16 @@
-import createBrowser from '../browsers/phantom';
+import createBrowser from '../setup/phantom';
+import createAppStarter from '../setup/server';
 import res from '../../client/src/resources/pages/startScreen';
 
 let browser;
-let server;
+let appStarter;
+let host;
 
-beforeAll(async () =>{
-  server = require('../../app/server').server;
-  browser = await createBrowser();
+beforeAll(async () => appStarter = createAppStarter(5050));
+
+beforeEach(async () =>{
+  host = appStarter();
+  browser = await createBrowser(host.port);
 });
 
 it('join game page matches snapshot', async () => {
@@ -29,9 +33,7 @@ it('clicking "join as player" button shows a deck of cards', async () => {
   expect(cardDeck.className).toBe('pile');
 });
 
-afterAll(async () => {
+afterEach(async () => {
   await browser.exit();
-  await server.close();
-  const thing = await server.on('close');
-  console.log(thing);
+  host.server.close();
 });

@@ -4,12 +4,12 @@
   "description": "multi screen table games",
   "main": "app/server.js",
   "scripts": {
-    "test": "PORT=1234 jest --watch",
+    "test": "jest --watch",
     "start": "node app/server.js",
     "test-client": "npm run test --prefix client",
     "start-client": "npm run start --prefix client",
     "build": "npm run build --prefix client",
-    "test-ci": "PORT=1234 jest"
+    "test-ci": "jest"
   },
   "repository": {
     "type": "git",

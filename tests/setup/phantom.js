@@ -1,10 +1,9 @@
 import phantom from 'phantom';
 
-export default async () => {
-  const instance = await phantom.create()
+export default async (customPort) => {
+  const instance = await phantom.create();
   const page = await instance.createPage();
-
-  const port = process.env.PORT || 3001;
+  const port = customPort || process.env.PORT || 8000;
 
   const visit = async (path) => {
     const status = await page.open(`http://localhost:${ port }${ path }`);
