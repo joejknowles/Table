@@ -9,3 +9,17 @@ export const ToPathButton = (props) => (
     { props.res }
   </button>
 );
+
+export const DispatchButton = ({
+  action,
+  dispatch,
+  res,
+  className
+}) => (
+  <button
+    onClick={ () => dispatch(action) }
+    className={ className }
+    >
+    { res }
+  </button>
+);

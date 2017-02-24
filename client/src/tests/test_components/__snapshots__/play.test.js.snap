@@ -1,4 +1,9 @@
 exports[`test component renders as before 1`] = `
 <div
-  className="deck" />
+  className="App Play">
+  <div
+    className="deck">
+    <Unknown />
+  </div>
+</div>
 `;
