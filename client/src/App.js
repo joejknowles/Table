@@ -3,8 +3,6 @@ import './App.css';
 
 import Routes from './components/routes'
 
-import paths from './paths'
-
 class App extends Component {
   render() {
     return (
