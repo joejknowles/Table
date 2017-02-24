@@ -1,6 +1,7 @@
 import createBrowser from '../setup/phantom';
 import createAppStarter from '../setup/server';
 import paths from '../../client/src/paths';
+import res from '../../client/src/resources/pages/play';
 
 describe('clicking the card on the players browser', async () => {
   let tableBrowser;
@@ -18,6 +19,11 @@ describe('clicking the card on the players browser', async () => {
     const result = await playerBrowser.click('.playCard');
     console.log(result);
     await tableBrowser.visit(paths.table);
+  });
+
+  it('says no more cards on the player\'s browser', async () => {
+    const message = await playerBrowser.find('.noCardsMessage');
+    expect(message.innerText).toBe(res.noCardsMessage);
   });
 
   it('displays the card on the table browser', async () => {
