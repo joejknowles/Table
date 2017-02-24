@@ -1,3 +1,4 @@
 export default {
-  playCard: 'Play Card'
+  playCard: 'Play Card',
+  noCardsMessage: 'No more cards'
 };
