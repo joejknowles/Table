@@ -1,35 +1,36 @@
 import createBrowser from '../setup/phantom';
 import createAppStarter from '../setup/server';
+import paths from '../../client/src/paths';
 
 describe('concurrent phantom instances', async () => {
- let tableBrowser;
- let playerBrowser;
- let appStarter;
- let host;
+  let tableBrowser;
+  let playerBrowser;
+  let appStarter;
+  let host;
 
- beforeAll(async () => appStarter = await createAppStarter(5000));
+  beforeAll(async () => appStarter = await createAppStarter(5000));
 
- beforeEach(async () => {
-   host = appStarter();
-   tableBrowser = await createBrowser(host.port);
-   playerBrowser = await createBrowser(host.port);
-   await tableBrowser.visit('/table');
-   await playerBrowser.visit('/play');
- });
+  beforeEach(async () => {
+    host = appStarter();
+    tableBrowser = await createBrowser(host.port);
+    playerBrowser = await createBrowser(host.port);
+    await tableBrowser.visit(paths.table);
+    await playerBrowser.visit(paths.play);
+  });
 
   it('loads table correctly', async () => {
     const pile = await tableBrowser.find('.pile');
     expect(pile.className).toBe('pile');
   });
 
- it('loads player correctly', async () => {
-   const cardDeck = await playerBrowser.find('.deck');
-   expect(cardDeck.className).toBe('deck');
- });
+  it('loads player correctly', async () => {
+    const cardDeck = await playerBrowser.find('.deck');
+    expect(cardDeck.className).toBe('deck');
+  });
 
- afterEach(() => {
-   tableBrowser.exit();
-   playerBrowser.exit();
-   host.server.close();
- });
+  afterEach(() => {
+    tableBrowser.exit();
+    playerBrowser.exit();
+    host.server.close();
+  });
 });
