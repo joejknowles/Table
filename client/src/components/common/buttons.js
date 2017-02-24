@@ -4,7 +4,7 @@ import { goToPath } from '../../helpers/routing';
 export const ToPathButton = (props) => (
   <button
     onClick={ () => goToPath(props.path) }
-    className={ props.class }
+    className={ props.className }
     >
     { props.res }
   </button>

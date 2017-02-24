@@ -5,7 +5,7 @@ import paths from '../../paths'
 const tableProps = {
   res: res.tableJoinButton,
   path: paths.table,
-  class: "table-join-button"
+  className: "table-join-button"
 };
 
 export const TableJoinButton = () => ToPathButton(tableProps);
@@ -13,7 +13,7 @@ export const TableJoinButton = () => ToPathButton(tableProps);
 const playerProps = {
   res: res.playerJoinButton,
   path: paths.play,
-  class: "player-join-button"
+  className: "player-join-button"
 };
 
 export const PlayerJoinButton = () => ToPathButton(playerProps);
