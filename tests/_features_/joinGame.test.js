@@ -6,7 +6,7 @@ let browser;
 let appStarter;
 let host;
 
-beforeAll(async () => appStarter = createAppStarter(5050));
+beforeAll(async () => appStarter = await createAppStarter(5050));
 
 beforeEach(async () =>{
   host = appStarter();
@@ -33,7 +33,7 @@ it('clicking "join as player" button shows a deck of cards', async () => {
   expect(cardDeck.className).toBe('pile');
 });
 
-afterEach(async () => {
-  await browser.exit();
+afterEach(() => {
+  browser.exit();
   host.server.close();
 });

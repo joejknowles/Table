@@ -7,7 +7,7 @@ describe('concurrent phantom instances', async () => {
  let appStarter;
  let host;
 
- beforeAll(async () => appStarter = createAppStarter(5000));
+ beforeAll(async () => appStarter = await createAppStarter(5000));
 
  beforeEach(async () => {
    host = appStarter();
@@ -27,9 +27,9 @@ describe('concurrent phantom instances', async () => {
    expect(cardDeck.className).toBe('deck');
  });
 
- afterEach(async () => {
-   await tableBrowser.exit();
-   await playerBrowser.exit();
-   await host.server.close();
+ afterEach(() => {
+   tableBrowser.exit();
+   playerBrowser.exit();
+   host.server.close();
  });
 });
