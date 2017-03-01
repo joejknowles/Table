@@ -30,7 +30,7 @@ describe('clicking the card on the players browser', async () => {
     expect(playCardButton.length).toBe(0);
   });
 
-  xit('displays the card on the table browser', async () => {
+  it('displays the card on the table browser', async () => {
     const card = await tableBrowser.find('.card');
     expect(card.className).toBe('card');
   });
