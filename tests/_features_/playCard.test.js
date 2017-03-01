@@ -25,6 +25,11 @@ describe('clicking the card on the players browser', async () => {
     expect(message.innerText).toBe(res.noCardsMessage);
   });
 
+  it('stops displaying button on the player\'s browser', async () => {
+    const playCardButton = await playerBrowser.find('.play-card');
+    expect(playCardButton.length).toBe(0);
+  });
+
   xit('displays the card on the table browser', async () => {
     const card = await tableBrowser.find('.card');
     expect(card.className).toBe('card');
