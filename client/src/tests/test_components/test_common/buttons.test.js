@@ -1,4 +1,4 @@
-import { ToPathButton, DispatchButton } from '../../../components/common/buttons';
+import { ToPathButton, DumbDispatchButton } from '../../../components/common/buttons';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -20,7 +20,7 @@ it('DispatchButton renders as before', () => {
     res: 'test res', className: 'test class'
   };
   const component = shallowRenderer.render(
-    <DispatchButton { ...props } />
+    <DumbDispatchButton { ...props } />
   );
   expect(component).toMatchSnapshot();
 });
@@ -29,8 +29,9 @@ it('DispatchButton calls dispatch on click', () => {
   const fn = jest.fn();
   const action = { type: 'test' };
   const component = shallow(
-    <DispatchButton dispatch={ fn } action={ action } />
+    <DumbDispatchButton dispatch={ fn } />
   );
+  expect(fn).not.toHaveBeenCalled();
   component.simulate('click');
-  expect(fn).toHaveBeenCalledWith(action);
+  expect(fn).toHaveBeenCalled();
 });

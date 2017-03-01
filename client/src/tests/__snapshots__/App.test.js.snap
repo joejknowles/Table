@@ -1,1 +1,14 @@
-exports[`test App renders as before 1`] = `<Unknown />`;
+exports[`test App renders as before 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }>
+  <Unknown />
+</Provider>
+`;

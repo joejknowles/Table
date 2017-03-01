@@ -1,21 +1,24 @@
 import React from 'react';
-import { DispatchButton } from '../common/buttons';
-import res from '../../resources/pages/play';
+import { connect } from 'react-redux';
+
+import PlayCardButton from './playCardButton';
 import '../../styles/Play.css';
+import res from '../../resources/pages/play';
 
-export const PlayButton = () => (
-  <DispatchButton
-    res={ res.playCard }
-    className={ 'playCard' }
-    dispatch={ () => {} }
-    action={ { type: 'PLAY_CARD' } }
-  />
-);
-
-export default () => (
+export const Play = ({ cardsRemaining }) => (
   <div className="App Play">
     <div className="deck">
-      <PlayButton />
+      { cardsRemaining > 0 ?
+          <PlayCardButton /> :
+          <p className='no-cards-message'>
+            { res.noCardsMessage }
+          </p>
+      }
     </div>
   </div>
 );
+
+
+export default connect(
+  ({ cardsRemaining }) => ({ cardsRemaining })
+)(Play);

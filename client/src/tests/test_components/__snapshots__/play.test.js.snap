@@ -1,9 +1,22 @@
-exports[`test component renders as before 1`] = `
+exports[`Play page renders as before with cards 1`] = `
 <div
   className="App Play">
   <div
     className="deck">
     <Unknown />
+  </div>
+</div>
+`;
+
+exports[`Play page renders as before without cards 1`] = `
+<div
+  className="App Play">
+  <div
+    className="deck">
+    <p
+      className="no-cards-message">
+      No more cards
+    </p>
   </div>
 </div>
 `;
