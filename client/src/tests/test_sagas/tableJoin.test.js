@@ -1,19 +1,13 @@
-import {
-  watchJoin,
-  watchPlayerJoin, playerJoin,
-  watchTableJoin, tableJoin
- } from '../../sagas';
+import { tableJoin } from '../../sagas/table';
 
- import { takeEvery, fork, call } from 'redux-saga/effects';
+import { call } from 'redux-saga/effects';
 
- import * as toPath from '../../routing';
- 
+import * as toPath from '../../routing';
+
 describe('tableJoin', () => {
   const gen = tableJoin();
-  it('forks go to table', () => {
-    expect(
-      gen.next().value
-    ).toEqual(
+  it('calls go to table', () => {
+    expect(gen.next().value).toEqual(
       call(toPath.table)
     );
   });
