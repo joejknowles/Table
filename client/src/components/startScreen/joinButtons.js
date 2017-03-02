@@ -1,19 +1,22 @@
+import React from 'react';
+
+import { DispatchButton } from '../common/buttons';
+
 import res from '../../resources/pages/startScreen';
-import { ToPathButton } from '../common/buttons';
-import paths from '../../paths'
+import * as actions from '../../actions'
 
-const tableProps = {
-  res: res.tableJoinButton,
-  path: paths.table,
-  className: "table-join-button"
-};
+export const TableJoinButton = () => (
+  <DispatchButton
+    res={ res.tableJoinButton }
+    className="table-join-button"
+    action={ actions.joinTable }
+  />
+);
 
-export const TableJoinButton = () => ToPathButton(tableProps);
-
-const playerProps = {
-  res: res.playerJoinButton,
-  path: paths.play,
-  className: "player-join-button"
-};
-
-export const PlayerJoinButton = () => ToPathButton(playerProps);
+export const PlayerJoinButton = () => (
+  <DispatchButton
+    res={ res.playerJoinButton }
+    className="player-join-button"
+    action={ actions.joinPlayer }
+  />
+);

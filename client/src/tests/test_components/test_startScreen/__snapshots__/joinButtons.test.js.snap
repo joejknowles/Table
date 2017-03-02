@@ -1,15 +1,21 @@
 exports[`test PlayerJoinButton renders as before 1`] = `
-<button
+<Connect(Component)
+  action={
+    Object {
+      "type": "PLAYER_JOIN",
+    }
+  }
   className="player-join-button"
-  onClick={[Function]}>
-  Join as player
-</button>
+  res="Join as player" />
 `;
 
 exports[`test TableJoinButton renders as before 1`] = `
-<button
+<Connect(Component)
+  action={
+    Object {
+      "type": "TABLE_JOIN",
+    }
+  }
   className="table-join-button"
-  onClick={[Function]}>
-  Join as table
-</button>
+  res="Join as table" />
 `;

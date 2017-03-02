@@ -5,7 +5,7 @@
   "main": "app/server.js",
   "scripts": {
     "test": "jest --watch",
-    "start": "node app/server.js",
+    "start": "node app/start.js",
     "test-client": "npm run test --prefix client",
     "start-client": "npm run start --prefix client",
     "build": "npm run build --prefix client",
@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/joejknowles/Table#readme",
   "dependencies": {
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "socket.io": "^1.7.3"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
