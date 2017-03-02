@@ -9,8 +9,12 @@ io.on('connection', function(socket) {
     console.log('connected, rooms: ', socket.rooms);
   });
   socket.on('PLAY_CARD', (data) => {
-    console.log(io.of('/').in('player'));
+    console.log('card played')
+    io.in('tables').emit('PLAY_CARD', data);
   });
 
-  console.log('connected, rooms: ', socket.rooms);
+  setInterval(()=>
+    console.log('connected, rooms: ', socket.rooms),
+    5000
+  );
 });
