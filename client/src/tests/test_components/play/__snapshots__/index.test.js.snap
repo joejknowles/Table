@@ -38,6 +38,6 @@ exports[`test PlayCardButton renders as before 1`] = `
       "type": "PLAY_CARD",
     }
   }
-  className="play-card btn"
+  className="play-card"
   res="Play Card" />
 `;
