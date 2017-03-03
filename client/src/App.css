@@ -2,8 +2,29 @@
   text-align: center;
 }
 
+.pile {
+  width: 20%;
+  margin: auto;
+  margin-top: 5%;
+}
+
+@media screen and (max-width: 60em) {
+  .pile {
+    width: 35%;
+    margin-top: 10%;
+  }
+}
+
+@media screen and (max-width: 39.9375em) {
+  .pile {
+    width: 50%;
+    margin-top: 10%;
+  }
+}
+
 .card {
-  height: 10em;
-  width: 10%;
-  border: 5px solid;
+  width: 100%;
+  padding-bottom: 140%;
+  border: 0.2em solid;
+  border-radius: 1em;
 }
