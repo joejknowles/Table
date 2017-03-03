@@ -8,12 +8,12 @@ const shallowRenderer = ReactTestUtils.createRenderer();
 
 describe('Play page', () => {
   it('renders as before with cards', () => {
-    const component = shallowRenderer.render(<Play cardsRemaining={ 1 } />);
+    const component = shallowRenderer.render(<Play hand={ 1 } />);
     expect(component).toMatchSnapshot();
   });
 
   it('renders as before without cards', () => {
-    const component = shallowRenderer.render(<Play cardsRemaining= { 0 } />);
+    const component = shallowRenderer.render(<Play hand= { 0 } />);
     expect(component).toMatchSnapshot();
   });
 });
