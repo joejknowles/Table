@@ -1,15 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { goToPath } from '../../helpers/routing';
-
-export const ToPathButton = (props) => (
-  <button
-    onClick={ () => goToPath(props.path) }
-    className={ props.className }
-    >
-    { props.res }
-  </button>
-);
 
 export const DumbDispatchButton = ({
   res, className,
@@ -17,7 +7,7 @@ export const DumbDispatchButton = ({
 }) => (
   <button
     onClick={ () => dispatch(action) }
-    className={ className }
+    className={ 'btn ' + className }
     >
     { res }
   </button>
