@@ -1,4 +1,6 @@
-import { Play } from '../../components/play';
+import { Play } from '../../../components/play';
+import PlayCardButton from '../../../components/play/playCardButton';
+import Hand from '../../../components/play/hand';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -16,4 +18,15 @@ describe('Play page', () => {
     const component = shallowRenderer.render(<Play hand= { 0 } />);
     expect(component).toMatchSnapshot();
   });
+});
+
+it('Hand renders as before', () => {
+  const component = shallowRenderer.render(<Hand />);
+  expect(component).toMatchSnapshot();
+});
+
+
+it('PlayCardButton renders as before', () => {
+  const component = shallowRenderer.render(<PlayCardButton />);
+  expect(component).toMatchSnapshot();
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import PlayCardButton from './playCardButton';
+import Hand from './hand';
 import { handSelector } from '../../reducers';
 import '../../styles/Play.css';
 import res from '../../resources/pages/play';
@@ -10,7 +10,7 @@ export const Play = ({ hand }) => (
   <div className="App Play">
     <div className="deck">
       { hand > 0 ?
-          <PlayCardButton /> :
+          <Hand /> :
           <p className='no-cards-message'>
             { res.noCardsMessage }
           </p>

@@ -20,3 +20,24 @@ exports[`Play page renders as before without cards 1`] = `
   </div>
 </div>
 `;
+
+exports[`test Hand renders as before 1`] = `
+<div
+  className="pile">
+  <div
+    className="card">
+    <Unknown />
+  </div>
+</div>
+`;
+
+exports[`test PlayCardButton renders as before 1`] = `
+<Connect(Component)
+  action={
+    Object {
+      "type": "PLAY_CARD",
+    }
+  }
+  className="play-card"
+  res="Play Card" />
+`;
