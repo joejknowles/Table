@@ -11,3 +11,6 @@ export const joinPlayersRoom = (socket) =>
 
 export const playCard = (socket, card) =>
   socket.emit('PLAY_CARD', card);
+
+export const joinTablesRoom = (socket) =>
+  socket.emit('join', 'tables');

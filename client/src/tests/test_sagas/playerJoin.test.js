@@ -34,6 +34,12 @@ describe('playerJoin', () => {
       call(toPath.play)
     );
   });
+
+  it('ends', () => {
+    expect(gen.next()).toEqual(
+      { done: true, value: undefined }
+    );
+  });
 });
 
 it('playCard emits PLAY_CARD event', () => {
