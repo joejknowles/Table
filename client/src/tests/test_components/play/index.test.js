@@ -25,7 +25,6 @@ it('Hand renders as before', () => {
   expect(component).toMatchSnapshot();
 });
 
-
 it('PlayCardButton renders as before', () => {
   const component = shallowRenderer.render(<PlayCardButton />);
   expect(component).toMatchSnapshot();
