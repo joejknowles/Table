@@ -8,7 +8,7 @@ import res from '../../resources/pages/play';
 
 export const Play = ({ hand }) => (
   <div className="App Play">
-    <div className="deck">
+    <div className="pile">
       { hand > 0 ?
           <Hand /> :
           <p className='no-cards-message'>

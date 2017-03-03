@@ -2,7 +2,7 @@ exports[`Play page renders as before with cards 1`] = `
 <div
   className="App Play">
   <div
-    className="deck">
+    className="pile">
     <Unknown />
   </div>
 </div>
@@ -12,7 +12,7 @@ exports[`Play page renders as before without cards 1`] = `
 <div
   className="App Play">
   <div
-    className="deck">
+    className="pile">
     <p
       className="no-cards-message">
       No more cards
