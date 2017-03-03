@@ -16,8 +16,8 @@ beforeEach(async () =>{
 it('clicking "join as player" button shows a deck of cards', async () => {
   await browser.visit('/');
   const playerJoinButton = await browser.click('.player-join-button');
-  const cardDeck = await browser.find('.deck');
-  expect(cardDeck.className).toBe('deck');
+  const cardDeck = await browser.find('.play-card');
+  expect(cardDeck.className).toBe('play-card btn');
 });
 
 it('clicking "join as player" button shows a deck of cards', async () => {
