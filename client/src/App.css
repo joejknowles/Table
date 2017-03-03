@@ -1,3 +1,9 @@
 .App {
   text-align: center;
 }
+
+.card {
+  height: 10em;
+  width: 10%;
+  border: 5px solid;
+}

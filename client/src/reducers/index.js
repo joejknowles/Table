@@ -12,4 +12,8 @@ export const handSelector = (state) => state.hand;
 
 export const tablePileSelector = (state) => state.tablePile;
 
+export const tablePileTopCardSelector = (state) => (
+  [ ...tablePileSelector(state) ].pop()
+);
+
 export default combineReducers({ hand, tablePile });

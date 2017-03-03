@@ -14,10 +14,12 @@ describe('clicking the card on the players browser', async () => {
   beforeEach(async () => {
     host = appStarter();
     playerBrowser = await createBrowser(host.port);
-    await playerBrowser.visit(paths.play);
-    const result = await playerBrowser.click('.play-card');
     tableBrowser = await createBrowser(host.port);
-    await tableBrowser.visit(paths.table);
+    await tableBrowser.visit(paths.startScreen);
+    await tableBrowser.click('.table-join-button');
+    await playerBrowser.visit(paths.startScreen);
+    await playerBrowser.click('.player-join-button');
+    await playerBrowser.click('.play-card');
   });
 
   it('says no more cards on the player\'s browser', async () => {

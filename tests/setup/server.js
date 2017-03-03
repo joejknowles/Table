@@ -1,4 +1,5 @@
 import app from '../../app';
+import { connectSockets } from '../../app/sockets';
 
 let port;
 
@@ -14,6 +15,8 @@ export default (customPort = 5000) => {
     };
 
     const server = app.listen(app.get('port'), logServerListening);
+
+    connectSockets(server);
 
     return {
       server,
