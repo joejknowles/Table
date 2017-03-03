@@ -25,7 +25,7 @@ describe('concurrent phantom instances', async () => {
 
   it('loads player correctly', async () => {
     const cardDeck = await playerBrowser.find('.play-card');
-    expect(cardDeck.className).toBe('play-card btn');
+    expect(cardDeck.className).toBe('btn play-card');
   });
 
   afterEach(() => {
