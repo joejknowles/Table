@@ -1,7 +1,10 @@
-import createBrowser from '../setup/phantom';
-import createAppStarter from '../setup/server';
+import createBrowser from './setup/phantom';
+import { addPlayer } from './setup/player';
+import { addTable } from './setup/table';
+import createAppStarter from './setup/server';
 import paths from '../../client/src/paths';
 import res from '../../client/src/resources/pages/play';
+
 
 describe('clicking the card on the players browser', async () => {
   let tableBrowser;
@@ -13,13 +16,9 @@ describe('clicking the card on the players browser', async () => {
 
   beforeEach(async () => {
     host = appStarter();
-    playerBrowser = await createBrowser(host.port);
-    tableBrowser = await createBrowser(host.port);
-    await tableBrowser.visit(paths.startScreen);
-    await tableBrowser.click('.table-join-button');
-    await playerBrowser.visit(paths.startScreen);
-    await playerBrowser.click('.player-join-button');
-    await playerBrowser.click('.play-card');
+    playerBrowser = await addPlayer(host.port);
+    tableBrowser = await addTable(host.port);
+    await playerBrowser.moves.playCard();
   });
 
   it('says no more cards on the player\'s browser', async () => {

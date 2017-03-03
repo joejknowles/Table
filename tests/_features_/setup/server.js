@@ -1,5 +1,5 @@
-import app from '../../app';
-import { connectSockets } from '../../app/sockets';
+import app from '../../../app';
+import { connectSockets } from '../../../app/sockets';
 
 let port;
 

@@ -1,5 +1,5 @@
-import createBrowser from '../setup/phantom';
-import createAppStarter from '../setup/server';
+import createBrowser from './setup/phantom';
+import createAppStarter from './setup/server';
 import paths from '../../client/src/paths';
 
 describe('concurrent phantom instances', async () => {
