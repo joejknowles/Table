@@ -19,7 +19,6 @@ export const Play = ({ hand }) => (
   </div>
 );
 
-
 export default connect(
   (state) => ({ hand: handSelector(state) })
 )(Play);
