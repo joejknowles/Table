@@ -31,6 +31,9 @@
   background: transparent;
   border:  0.2em solid;
   margin: 1em;
+  border-radius: 1em;
+  outline-offset: 10px;
+  outline-color: grey;
 }
 
 .btn:active {
@@ -44,10 +47,4 @@
   height: 100%;
   border: none;
   margin: 0;
-}
-
-.play-card:active {
-  -webkit-box-shadow: inset 4px 4px 36px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: inset 4px 4px 36px 0px rgba(0,0,0,0.75);
-  box-shadow: inset 4px 4px 36px 0px rgba(0,0,0,0.75);
 }
