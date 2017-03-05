@@ -27,5 +27,8 @@ exports[`test component renders as before 1`] = `
   <Route
     component={[Function]}
     path="/table" />
+  <Route
+    component={[Function]}
+    path="/*" />
 </Router>
 `;

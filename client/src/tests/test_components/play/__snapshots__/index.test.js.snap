@@ -23,11 +23,8 @@ exports[`Play page renders as before without cards 1`] = `
 
 exports[`test Hand renders as before 1`] = `
 <div
-  className="pile">
-  <div
-    className="card">
-    <Unknown />
-  </div>
+  className="card">
+  <Unknown />
 </div>
 `;
 
