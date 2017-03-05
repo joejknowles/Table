@@ -1,8 +1,7 @@
 exports[`test component renders as before 1`] = `
 <div
-  className="App">
+  className="join-game">
   <Unknown />
-  <hr />
   <Unknown />
 </div>
 `;

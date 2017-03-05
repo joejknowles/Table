@@ -1,9 +1,11 @@
 import React from 'react';
-import { PlayerJoinButton, TableJoinButton } from './joinButtons';
+import JoinGame from './joinGame';
+import NewGame from './newGame';
 
 export default () => (
   <div  className="App">
-    <PlayerJoinButton />
-    <TableJoinButton />
+    <JoinGame />
+    <hr />
+    <NewGame />
   </div>
 );

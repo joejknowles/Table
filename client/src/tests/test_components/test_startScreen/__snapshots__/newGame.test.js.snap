@@ -1,0 +1,12 @@
+exports[`test component renders as before 1`] = `
+<div>
+  <Connect(Component)
+    action={
+      Object {
+        "type": "NEW_GAME",
+      }
+    }
+    className="new-game"
+    res="Start a New Game" />
+</div>
+`;
