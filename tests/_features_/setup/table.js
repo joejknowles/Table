@@ -1,5 +1,5 @@
 import createBrowser from './phantom';
-import paths from '../../../client/src/paths';
+import paths from '../../../client/src/shared/paths';
 
 export const addTable = async (port) => {
   const tableBrowser = await createBrowser(port);

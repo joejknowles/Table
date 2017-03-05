@@ -1,4 +1,4 @@
-import paths from '../paths';
+import paths from '../shared/paths';
 
 import { browserHistory } from 'react-router';
 

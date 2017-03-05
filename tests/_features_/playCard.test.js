@@ -2,7 +2,7 @@ import createBrowser from './setup/phantom';
 import { addPlayer } from './setup/player';
 import { addTable } from './setup/table';
 import createAppStarter from './setup/server';
-import paths from '../../client/src/paths';
+import paths from '../../client/src/shared/paths';
 import res from '../../client/src/resources/pages/play';
 
 

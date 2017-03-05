@@ -1,6 +1,6 @@
 import createBrowser from './setup/phantom';
 import createAppStarter from './setup/server';
-import paths from '../../client/src/paths';
+import paths from '../../client/src/shared/paths';
 
 describe('concurrent phantom instances', async () => {
   let tableBrowser;

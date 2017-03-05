@@ -1,5 +1,6 @@
 import createBrowser from './setup/phantom';
 import createAppStarter from './setup/server';
+import paths from '../../client/src/shared/paths';
 import res from '../../client/src/resources/pages/startScreen';
 
 let browser;
