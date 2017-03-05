@@ -10,32 +10,48 @@ export default async (customPort) => {
     return status;
   };
 
-  const pageContent = async () => {
-    const content = await page.property('content');
-    return content;
-  };
+  const pageContent = async () => (
+    await page.property('content')
+  );
 
   const exit = async () => instance.exit();
 
-  const find = async (selector) => {
-    return await page.invokeMethod('evaluate', (selector) => (
+  const find = async (selector) => (
+    await page.invokeMethod('evaluate', (selector) => (
       document.querySelector(selector)
-    ), selector);
+    ), selector)
+  );
+
+  const hasElement = async (selector) => {
+    const element = await find(selector);
+    return element.className !== undefined && element.className.length > 0;
   };
 
-  const click = async (selector) => {
-    const result = await page.invokeMethod('evaluate', (selector) => {
+  const click = async (selector) => (
+    await page.invokeMethod('evaluate', (selector) => {
       const element = document.querySelector(selector);
       return element.click();
-    }, selector);
-    return result;
-  };
+    }, selector)
+  );
+
+  const currentPath = async () => (
+    await page.evaluate(() => (window.location.pathname))
+  );
+
+  const containsText = async (text) => (
+    await page.invokeMethod('evaluate', (text) => (
+      document.documentElement.innerHTML.indexOf(text) > 0
+    ), text)
+  );
 
   return {
     visit,
     pageContent,
     exit,
     click,
-    find
+    find,
+    hasElement,
+    currentPath,
+    containsText
   };
 };

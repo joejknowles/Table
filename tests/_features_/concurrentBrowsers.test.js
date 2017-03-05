@@ -19,13 +19,15 @@ describe('concurrent phantom instances', async () => {
   });
 
   it('loads table correctly', async () => {
-    const pile = await tableBrowser.find('.pile');
-    expect(pile.className).toBe('pile');
+    expect(
+      await tableBrowser.hasElement('.pile')
+    ).toBe(true);
   });
 
   it('loads player correctly', async () => {
-    const cardDeck = await playerBrowser.find('.play-card');
-    expect(cardDeck.className).toBe('btn play-card');
+    expect(
+      await playerBrowser.hasElement('.play-card')
+    ).toBe(true);
   });
 
   afterEach(() => {

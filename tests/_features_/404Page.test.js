@@ -15,8 +15,8 @@ describe('404 page', async () => {
   });
 
   it('loads', async () => {
-    const pile = await browser.find('.not-found-message');
-    expect(pile.className).toBe('not-found-message');
+    const loadsMessage = await browser.hasElement('.not-found-message');
+    expect(loadsMessage).toBe(true);
   });
 
   afterEach(() => {

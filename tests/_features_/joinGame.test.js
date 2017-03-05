@@ -3,31 +3,49 @@ import createAppStarter from './setup/server';
 import paths from '../../client/src/shared/paths';
 import res from '../../client/src/resources/pages/startScreen';
 
-let browser;
-let appStarter;
-let host;
+describe('joining a game', () => {
+  let browser;
+  let appStarter;
+  let host;
 
-beforeAll(async () => appStarter = await createAppStarter(5050));
+  beforeAll(async () => appStarter = await createAppStarter(5050));
 
-beforeEach(async () =>{
-  host = appStarter();
-  browser = await createBrowser(host.port);
-    await browser.visit(paths.startScreen);
-});
+  beforeEach(async () =>{
+    host = appStarter();
+    browser = await createBrowser(host.port);
+      await browser.visit(paths.startScreen);
+  });
 
-it('clicking "join as player" button shows a play card button', async () => {
-  const playerJoinButton = await browser.click('.player-join-button');
-  const button = await browser.find('.play-card');
-  expect(button.className).toBe('btn play-card');
-});
+  describe('clicking "join as player" button', () =>{
+    it('shows a play card button', async () => {
+      await browser.click('.player-join-button');
+      expect(
+        await browser.hasElement('.play-card')
+      ).toBe(true);
+    });
 
-it('clicking "join as table" button shows a deck of cards', async () => {
-  const playerJoinButton = await browser.click('.table-join-button');
-  const cardDeck = await browser.find('.pile');
-  expect(cardDeck.className).toBe('pile');
-});
+    it('takes you to play page', async () => {
+      await browser.click('.player-join-button');
+      expect(await browser.currentPath()).toBe(paths.play);
+    });
+  });
 
-afterEach(() => {
-  browser.exit();
-  host.server.close();
+  describe('clicking "join as table" button', () => {
+    it( 'shows a deck of cards', async () => {
+      await browser.click('.table-join-button');
+      expect(
+        await browser.hasElement('.pile')
+      ).toBe(true);
+    });
+
+    it('takes you to table page', async () => {
+      await browser.click('.table-join-button');
+      expect(await browser.currentPath()).toBe(paths.table);
+    });
+  });
+
+  afterEach(() => {
+    browser.exit();
+    host.server.close();
+  });
 });

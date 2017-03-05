@@ -9,12 +9,10 @@ import res from '../../client/src/resources/pages/play';
 describe('clicking the card on the players browser', async () => {
   let tableBrowser;
   let playerBrowser;
-  let appStarter;
   let host;
 
-  beforeAll(async () => appStarter = await createAppStarter(5100));
-
-  beforeEach(async () => {
+  beforeAll(async () => {
+    const appStarter = await createAppStarter(5100);
     host = appStarter();
     playerBrowser = await addPlayer(host.port);
     tableBrowser = await addTable(host.port);
@@ -22,21 +20,24 @@ describe('clicking the card on the players browser', async () => {
   });
 
   it('says no more cards on the player\'s browser', async () => {
-    const message = await playerBrowser.find('.no-cards-message');
-    expect(message.innerText).toBe(res.noCardsMessage);
+    expect(
+      await playerBrowser.containsText(res.noCardsMessage)
+    ).toBe(true);
   });
 
   it('stops displaying button on the player\'s browser', async () => {
-    const playCardButton = await playerBrowser.find('.play-card');
-    expect(playCardButton.length).toBe(0);
+    expect(
+      await playerBrowser.hasElement('.play-card')
+    ).toBe(false);
   });
 
   it('displays the card on the table browser', async () => {
-    const card = await tableBrowser.find('.card');
-    expect(card.className).toBe('card');
+    expect(
+      await tableBrowser.hasElement('.card')
+    ).toBe(true);
   });
 
-  afterEach(() => {
+  afterAll(() => {
     tableBrowser.exit();
     playerBrowser.exit();
     host.server.close();
