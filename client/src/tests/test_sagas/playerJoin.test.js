@@ -5,20 +5,15 @@ import { call, takeEvery } from 'redux-saga/effects';
 import * as toPath from '../../routing';
 import createWebSocketConnection, * as events from '../../api/sockets';
 
+const socket = {
+  emit: jest.fn()
+}
+
 describe('playerJoin', () => {
-  const gen = playerJoin();
+  const gen = playerJoin(socket);
 
-  it('connects to socket', () => {
-    expect(gen.next().value).toEqual(
-      call(createWebSocketConnection)
-    );
-  });
-
-  const socket = {
-    emit: jest.fn()
-  }
   it('joins player room', () => {
-    expect(gen.next(socket).value).toEqual(
+    expect(gen.next().value).toEqual(
       call(events.joinPlayersRoom, socket)
     );
   });
@@ -44,9 +39,7 @@ describe('playerJoin', () => {
 
 it('playCard emits PLAY_CARD event', () => {
   const action = { card: '5'};
-  const socket = {
-    emit: jest.fn()
-  }
+
   expect(playCard(socket, action).next().value).toEqual(
     call(events.playCard, socket, action.card)
   );

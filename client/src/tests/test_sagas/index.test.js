@@ -1,5 +1,6 @@
 import {
   watchJoin,
+  watchNewGame,
   watchPlayerJoin,
   watchTableJoin,
  } from '../../sagas';
@@ -8,17 +9,26 @@ import { tableJoin } from '../../sagas/table';
 
 import { takeEvery, fork, call } from 'redux-saga/effects';
 
+const socket = jest.fn();
+
 describe('watchJoin', () => {
-  const gen = watchJoin();
+  const gen = watchJoin(socket);
+
+  it('forks watchNewGame', () => {
+    expect(gen.next().value).toEqual(
+      fork(watchNewGame, socket)
+    );
+  });
+
   it('forks watchPlayerJoin', () => {
     expect(gen.next().value).toEqual(
-      fork(watchPlayerJoin)
+      fork(watchPlayerJoin, socket)
     );
   });
 
   it('calls watchTableJoin', () => {
     expect(gen.next().value).toEqual(
-      call(watchTableJoin)
+      call(watchTableJoin, socket)
     );
   });
 });
@@ -26,9 +36,9 @@ describe('watchJoin', () => {
 describe('watchPlayerJoin', () => {
   it('takes every PLAYER_JOIN', () => {
     expect(
-      watchPlayerJoin().next().value
+      watchPlayerJoin(socket).next().value
     ).toEqual(
-      takeEvery('PLAYER_JOIN', playerJoin)
+      takeEvery('PLAYER_JOIN', playerJoin, socket)
     );
   });
 });
@@ -36,9 +46,9 @@ describe('watchPlayerJoin', () => {
 describe('watchTableJoin', () => {
   it('takes every TABLE_JOIN', () => {
     expect(
-      watchTableJoin().next().value
+      watchTableJoin(socket).next().value
     ).toEqual(
-      takeEvery('TABLE_JOIN', tableJoin)
+      takeEvery('TABLE_JOIN', tableJoin, socket)
     );
   });
 });

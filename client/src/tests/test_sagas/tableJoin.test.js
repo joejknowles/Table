@@ -7,12 +7,16 @@ import { call, fork } from 'redux-saga/effects';
 import * as toPath from '../../routing';
 import createWebSocketConnection, * as events from '../../api/sockets';
 
+const socket = {
+  emit: jest.fn()
+}
+
 describe('tableJoin', () => {
-  const gen = tableJoin();
+  const gen = tableJoin(socket);
 
   it('calls connect as table', () => {
     expect(gen.next().value).toEqual(
-      fork(connectAsTable)
+      fork(connectAsTable, socket)
     );
   });
 
@@ -24,19 +28,10 @@ describe('tableJoin', () => {
 });
 
 describe('connectAsTable', () => {
-  const gen = connectAsTable();
+  const gen = connectAsTable(socket);
 
-  it('connects to socket', () => {
-    expect(gen.next().value).toEqual(
-      call(createWebSocketConnection)
-    );
-  });
-
-  const socket = {
-    emit: jest.fn()
-  }
   it('joins table room', () => {
-    expect(gen.next(socket).value).toEqual(
+    expect(gen.next().value).toEqual(
       call(events.joinTablesRoom, socket)
     );
   });

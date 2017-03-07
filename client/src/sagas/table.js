@@ -2,7 +2,7 @@ import { call, take, put, fork } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 
 import * as toPath from '../routing';
-import createWebSocketConnection, * as events from '../api/sockets';
+import * as events from '../api/sockets';
 import { addCard } from '../actions';
 
 export const createSocketChannel = (socket) => {
@@ -22,14 +22,13 @@ export function* watchCards(channel) {
   }
 }
 
-export function* connectAsTable() {
-  const socket = yield call(createWebSocketConnection);
+export function* connectAsTable(socket) {
   yield call(events.joinTablesRoom, socket);
   const channel = yield call(createSocketChannel, socket);
   yield call(watchCards, channel);
 }
 
-export function* tableJoin() {
-  yield fork(connectAsTable);
+export function* tableJoin(socket) {
+  yield fork(connectAsTable, socket);
   yield call(toPath.table);
 }
