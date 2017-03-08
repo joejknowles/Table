@@ -25,7 +25,7 @@ describe('concurrent phantom instances', async () => {
   });
 
   it('loads player correctly', async () => {
-    playerBrowser.click('.begin-button');
+    await playerBrowser.click('.begin-button');
     expect(
       await playerBrowser.hasElement('.play-card')
     ).toBe(true);

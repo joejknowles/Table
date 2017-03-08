@@ -29,8 +29,8 @@ const onPlayCard = (socket, io) => {
 
 
 const onBegin = (socket, io) => {
-  socket.on('BEGIN_GAME', (data) => {
-    socket.broadcast('BEGIN_GAME', data);
+  socket.on('REQUEST_BEGIN_GAME', (data) => {
+    io.emit('BEGIN_GAME', data);
   });
 };
 
@@ -38,7 +38,7 @@ module.exports = {
   addHandlers: (io) => {
     io.on('connection', function(socket) {
       onJoin(socket);
-      onBegin(socket);
+      onBegin(socket, io);
       onPlayCard(socket, io);
     });
   },
