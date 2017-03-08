@@ -2,11 +2,11 @@ import {
   watchJoin,
   watchNewGame,
   watchPlayerJoin,
-  watchTableJoin,
-  watchBegin
+  watchTableJoin
  } from '../../sagas';
 import { playerJoin } from '../../sagas/play';
 import { tableJoin } from '../../sagas/table';
+import { watchBegin } from '../../sagas/beginGame';
 
 import { takeEvery, fork, call } from 'redux-saga/effects';
 

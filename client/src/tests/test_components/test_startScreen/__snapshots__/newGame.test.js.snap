@@ -3,7 +3,7 @@ exports[`test component renders as before 1`] = `
   <Connect(Component)
     action={
       Object {
-        "type": "NEW_GAME",
+        "type": "REQUEST_NEW_GAME",
       }
     }
     className="new-game"

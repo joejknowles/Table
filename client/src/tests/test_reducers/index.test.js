@@ -31,7 +31,7 @@ describe('game code reducer', () => {
   ));
 
   it('saves game code', () => (
-    expect(gameCode('', { type: 'JOIN_GAME_SUCCESS', game})).toEqual(game.code)
+    expect(gameCode('', { type: 'NEW_GAME', game})).toEqual(game.code)
   ));
 });
 

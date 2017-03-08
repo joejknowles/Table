@@ -9,7 +9,7 @@ export const tablePile = (state = [], action) => (
 );
 
 export const gameCode = (state = '', action) => (
-  action.type === 'JOIN_GAME_SUCCESS' ? action.game.code : state
+  action.type === 'NEW_GAME' ? action.game.code : state
 );
 
 export const clientType = (state = '', action) => {

@@ -6,8 +6,8 @@ export const joinTable = ({
   type: 'TABLE_JOIN'
 });
 
-export const newGame = ({
-  type: 'NEW_GAME'
+export const requestNewGame = ({
+  type: 'REQUEST_NEW_GAME'
 });
 
 export const addCard = (card) => ({
