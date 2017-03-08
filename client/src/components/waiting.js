@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { DispatchButton } from './common/buttons';
 import res from '../resources/pages/waiting';
+import { gameCodeSelector } from '../reducers';
 
 export const Waiting = ({ code, players }) => (
   <div className="App">
@@ -16,4 +17,8 @@ export const Waiting = ({ code, players }) => (
   </div>
 );
 
-export default connect()(Waiting);
+const mapStateToProps = (state) => ({
+  code: gameCodeSelector(state)
+});
+
+export default connect(mapStateToProps)(Waiting);

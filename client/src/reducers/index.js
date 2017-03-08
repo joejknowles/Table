@@ -27,6 +27,8 @@ export default combineReducers({
   hand, tablePile, clientType, gameCode
 });
 
+
+
 export const handSelector = (state) => state.hand;
 
 export const tablePileSelector = (state) => state.tablePile;
@@ -34,3 +36,5 @@ export const tablePileSelector = (state) => state.tablePile;
 export const tablePileTopCardSelector = (state) => (
   [ ...tablePileSelector(state) ].pop()
 );
+
+export const gameCodeSelector = (state) => state.gameCode;
