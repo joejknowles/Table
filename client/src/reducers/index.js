@@ -8,6 +8,26 @@ export const tablePile = (state = [], action) => (
   action.type === 'ADD_CARD' ? [ ...state, action.card ] : state
 );
 
+export const gameCode = (state = '', action) => (
+  action.type === 'JOIN_GAME_SUCCESS' ? action.game.code : state
+);
+
+export const clientType = (state = '', action) => {
+  switch (action.type) {
+    case 'PLAYER_JOIN':
+      return 'PLAYER';
+    case 'TABLE_JOIN':
+      return 'TABLE';
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({
+  hand, tablePile, clientType,
+  game: { code: gameCode }
+});
+
 export const handSelector = (state) => state.hand;
 
 export const tablePileSelector = (state) => state.tablePile;
@@ -15,5 +35,3 @@ export const tablePileSelector = (state) => state.tablePile;
 export const tablePileTopCardSelector = (state) => (
   [ ...tablePileSelector(state) ].pop()
 );
-
-export default combineReducers({ hand, tablePile });

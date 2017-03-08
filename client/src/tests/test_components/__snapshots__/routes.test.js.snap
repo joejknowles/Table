@@ -23,10 +23,13 @@ exports[`test component renders as before 1`] = `
     path="/" />
   <Route
     component={[Function]}
-    path="/play" />
+    path="/play(/:gameCode)" />
   <Route
     component={[Function]}
     path="/table" />
+  <Route
+    component={[Function]}
+    path="/waiting" />
   <Route
     component={[Function]}
     path="/*" />

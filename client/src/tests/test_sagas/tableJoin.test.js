@@ -1,8 +1,9 @@
 import {
   tableJoin, connectAsTable,
-  createSocketChannel, watchCards } from '../../sagas/table';
+  createSocketChannel, watchCards,
+  tableBegin } from '../../sagas/table';
 
-import { call, fork } from 'redux-saga/effects';
+import { call, fork, takeEvery } from 'redux-saga/effects';
 
 import * as toPath from '../../routing';
 import createWebSocketConnection, * as events from '../../api/sockets';
@@ -20,9 +21,21 @@ describe('tableJoin', () => {
     );
   });
 
-  it('calls go to table', () => {
+  it('watches for BEGIN_GAME', () => {
     expect(gen.next().value).toEqual(
-      call(toPath.table)
+      takeEvery('BEGIN_GAME', tableBegin, socket)
+    );
+  });
+
+  it('calls go to waiting', () => {
+    expect(gen.next().value).toEqual(
+      call(toPath.waiting)
+    );
+  });
+
+  it('ends', () => {
+    expect(gen.next()).toEqual(
+      { done: true, value: undefined }
     );
   });
 });
@@ -36,16 +49,20 @@ describe('connectAsTable', () => {
     );
   });
 
-  it('creates socket channel', () => {
-    expect(gen.next().value).toEqual(
-      call(createSocketChannel, socket)
-    );
-  });
-
   const channel = jest.fn();
   it('calls watchCards', () => {
-    expect(gen.next(channel).value).toEqual(
-      call(watchCards, channel)
+    expect(gen.next(socket).value).toEqual(
+      call(watchCards, socket)
+    );
+  });
+});
+
+describe('tableBegin', () => {
+  const gen = tableBegin(socket);
+
+  it('goes to table path', () => {
+    expect(gen.next().value).toEqual(
+      call(toPath.table)
     );
   });
 });

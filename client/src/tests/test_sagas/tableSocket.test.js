@@ -2,7 +2,7 @@ import { createSocketChannel, watchCards } from '../../sagas/table';
 import { addCard } from '../../actions';
 
 import { eventChannel } from 'redux-saga';
-import { take, put } from 'redux-saga/effects';
+import { take, put, call } from 'redux-saga/effects';
 
 import * as toPath from '../../routing';
 import createWebSocketConnection, * as events from '../../api/sockets';
@@ -18,10 +18,19 @@ describe('createSocketChannel', () => {
 });
 
 describe('watchCards', () => {
-  const channel = () => jest.fn();
-  const gen = watchCards(channel);
-  it('takes channel', () => {
+  const socket = () => jest.fn();
+  const gen = watchCards(socket);
+
+  it('creates socket channel', () => {
     expect(gen.next().value).toEqual(
+      call(createSocketChannel, socket)
+    );
+  });
+
+  const channel = jest.fn();
+
+  it('takes channel', () => {
+    expect(gen.next(channel).value).toEqual(
       take(channel)
     );
   });

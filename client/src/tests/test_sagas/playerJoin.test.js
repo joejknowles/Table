@@ -1,4 +1,4 @@
-import { playerJoin, playCard } from '../../sagas/play';
+import { playerJoin, playerBegin, playCard } from '../../sagas/play';
 
 import { call, takeEvery } from 'redux-saga/effects';
 
@@ -18,15 +18,15 @@ describe('playerJoin', () => {
     );
   });
 
-  it('takes every PLAY_CARD', () => {
+  it('takes every BEGIN_GAME', () => {
     expect(gen.next().value).toEqual(
-      takeEvery('PLAY_CARD', playCard, socket)
+      takeEvery('BEGIN_GAME', playerBegin, socket)
     );
   });
 
   it('calls go to play', () => {
     expect(gen.next().value).toEqual(
-      call(toPath.play)
+      call(toPath.waiting)
     );
   });
 
@@ -37,10 +37,18 @@ describe('playerJoin', () => {
   });
 });
 
-it('playCard emits PLAY_CARD event', () => {
-  const action = { card: '5'};
+describe('playerBegin', () => {
+  const gen = playerBegin(socket);
 
-  expect(playCard(socket, action).next().value).toEqual(
-    call(events.playCard, socket, action.card)
-  );
+  it('takes every PLAY_CARD', () => {
+    expect(gen.next().value).toEqual(
+      takeEvery('PLAY_CARD', playCard, socket)
+    );
+  });
+
+  it('goes to table path', () => {
+    expect(gen.next().value).toEqual(
+      call(toPath.play)
+    );
+  });
 });

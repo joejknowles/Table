@@ -7,8 +7,13 @@ export function* playCard(socket, action) {
   yield call(events.playCard, socket, action.card)
 }
 
-export function* playerJoin(socket) {
-  yield call(events.joinPlayersRoom, socket);
+export function* playerBegin(socket) {
   yield takeEvery('PLAY_CARD', playCard, socket);
   yield call(toPath.play);
+}
+
+export function* playerJoin(socket) {
+  yield call(events.joinPlayersRoom, socket);
+  yield takeEvery('BEGIN_GAME', playerBegin, socket);
+  yield call(toPath.waiting);
 }
