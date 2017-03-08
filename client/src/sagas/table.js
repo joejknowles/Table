@@ -1,17 +1,12 @@
 import { call, put, fork, takeEvery } from 'redux-saga/effects';
-import { eventChannel } from 'redux-saga';
 
 import * as toPath from '../routing';
 import * as events from '../api/sockets';
 import * as actions from '../actions';
+import { createChannelForEvent } from './index';
 
 export const createAddCardChannel = (socket) => {
-  return eventChannel(emit => {
-    socket.on('PLAY_CARD', (data) => {
-      emit({ value: data });
-    });
-    return () => socket.off();
-  });
+  return createChannelForEvent(socket, 'PLAY_CARD');
 };
 
 export function* addCard(card) {

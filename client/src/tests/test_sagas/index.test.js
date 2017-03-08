@@ -3,6 +3,7 @@ import {
   watchNewGame,
   watchPlayerJoin,
   watchTableJoin,
+  watchBegin
  } from '../../sagas';
 import { playerJoin } from '../../sagas/play';
 import { tableJoin } from '../../sagas/table';
@@ -26,9 +27,15 @@ describe('watchJoin', () => {
     );
   });
 
-  it('calls watchTableJoin', () => {
+  it('forks watchTableJoin', () => {
     expect(gen.next().value).toEqual(
-      call(watchTableJoin, socket)
+      fork(watchTableJoin, socket)
+    );
+  });
+
+  it('calls watchBegin', () => {
+    expect(gen.next().value).toEqual(
+      call(watchBegin, socket)
     );
   });
 });
