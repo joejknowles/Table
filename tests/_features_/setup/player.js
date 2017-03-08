@@ -12,6 +12,7 @@ export const addPlayer = async (port) => {
   const playerBrowser = await createBrowser(port);
   await playerBrowser.visit(paths.startScreen);
   await playerBrowser.click('.player-join-button');
+  await playerBrowser.click('.begin-button')
   return {
     ...playerBrowser,
     moves: createPlayerMoves(playerBrowser)

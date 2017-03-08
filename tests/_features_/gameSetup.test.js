@@ -11,9 +11,8 @@ describe('setting up a game', () => {
   let host;
   let gameCode;
 
-  beforeAll(async () => appStarter = await createAppStarter(5020));
-
-  beforeEach(async () => {
+  beforeAll(async () => {
+    appStarter = await createAppStarter(5020);
     host = appStarter();
     tableBrowser = await createBrowser(host.port);
     player1Browser = await createBrowser(host.port);
@@ -36,7 +35,15 @@ describe('setting up a game', () => {
     ).toBe(true);
   });
 
+  xit('says 1 player', async () => {
+
+  });
+
   xit('player joins by entering code on first screen', async () => {
+
+  });
+
+  xit('says 2 players', async () => {
 
   });
 
@@ -44,7 +51,20 @@ describe('setting up a game', () => {
 
   });
 
-  afterEach(() => {
+  it('begins game on own browser', async () => {
+    tableBrowser.click('.begin-button');
+    expect(
+      await tableBrowser.hasElement('.pile')
+    ).toBe(true);
+  });
+
+  it('begins game on other browsers', async () => {
+    expect(
+      await player1Browser.hasElement('.pile')
+    ).toBe(true);
+  });
+
+  afterAll(() => {
     tableBrowser.exit();
     player1Browser.exit();
     player2Browser.exit();

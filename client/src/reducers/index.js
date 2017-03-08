@@ -24,8 +24,7 @@ export const clientType = (state = '', action) => {
 };
 
 export default combineReducers({
-  hand, tablePile, clientType,
-  game: { code: gameCode }
+  hand, tablePile, clientType, gameCode
 });
 
 export const handSelector = (state) => state.hand;

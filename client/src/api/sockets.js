@@ -6,11 +6,11 @@ export default () => {
   return socket;
 };
 
+export const joinTablesRoom = (socket) =>
+  socket.emit('join', 'tables');
+
 export const joinPlayersRoom = (socket) =>
   socket.emit('join', 'players');
 
 export const playCard = (socket, card) =>
   socket.emit('PLAY_CARD', card);
-
-export const joinTablesRoom = (socket) =>
-  socket.emit('join', 'tables');
