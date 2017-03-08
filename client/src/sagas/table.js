@@ -1,11 +1,11 @@
-import { call, take, put, fork, takeEvery } from 'redux-saga/effects';
+import { call, put, fork, takeEvery } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 
 import * as toPath from '../routing';
 import * as events from '../api/sockets';
-import { addCard } from '../actions';
+import * as actions from '../actions';
 
-export const createSocketChannel = (socket) => {
+export const createAddCardChannel = (socket) => {
   return eventChannel(emit => {
     socket.on('PLAY_CARD', (data) => {
       emit({ value: data });
@@ -14,12 +14,13 @@ export const createSocketChannel = (socket) => {
   });
 };
 
+export function* addCard(card) {
+  yield put(actions.addCard(card));
+}
+
 export function* watchCards(socket) {
-  const channel = yield call(createSocketChannel, socket);
-  while(true) {
-    const card = yield take(channel);
-    yield put(addCard(card));
-  }
+  const channel = yield call(createAddCardChannel, socket);
+  yield takeEvery(channel, addCard);
 }
 
 export function* connectAsTable(socket) {

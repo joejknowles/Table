@@ -1,18 +1,18 @@
-import { createSocketChannel, watchCards } from '../../sagas/table';
-import { addCard } from '../../actions';
+import { createAddCardChannel, watchCards, addCard } from '../../sagas/table';
+import * as actions from '../../actions';
 
 import { eventChannel } from 'redux-saga';
-import { take, put, call } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 
 import * as toPath from '../../routing';
 import createWebSocketConnection, * as events from '../../api/sockets';
 
-describe('createSocketChannel', () => {
+describe('createAddCardChannel', () => {
   const socket = {
     on: jest.fn()
   };
   it('sets a play card handler', () => {
-    const channel = createSocketChannel(socket);
+    const channel = createAddCardChannel(socket);
     expect(socket.on).toHaveBeenCalled();
   });
 });
@@ -23,28 +23,15 @@ describe('watchCards', () => {
 
   it('creates socket channel', () => {
     expect(gen.next().value).toEqual(
-      call(createSocketChannel, socket)
+      call(createAddCardChannel, socket)
     );
   });
 
   const channel = jest.fn();
 
-  it('takes channel', () => {
+  it('takes every event from channel to addCard', () => {
     expect(gen.next(channel).value).toEqual(
-      take(channel)
-    );
-  });
-
-  it('puts ADD_CARD', () => {
-    const card = 'data'
-    expect(gen.next(card).value).toEqual(
-      put(addCard(card))
-    );
-  });
-
-  it('loops', () => {
-    expect(gen.next().value).toEqual(
-      take(channel)
+      takeEvery(channel, addCard)
     );
   });
 });
