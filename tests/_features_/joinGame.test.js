@@ -13,7 +13,7 @@ describe('joining a game', () => {
   beforeEach(async () =>{
     host = appStarter();
     browser = await createBrowser(host.port);
-      await browser.visit(paths.startScreen);
+    await browser.visit(paths.startScreen);
   });
 
   describe('clicking "join as player" button', () =>{
