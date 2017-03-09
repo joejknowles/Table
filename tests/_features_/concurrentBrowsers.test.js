@@ -1,21 +1,20 @@
-import createBrowser from './setup/phantom';
+import createGame from './setup/users/fullGame';
 import createAppStarter from './setup/server';
 import paths from '../../client/src/shared/paths';
 
 describe('concurrent phantom instances', async () => {
   let tableBrowser;
   let playerBrowser;
-  let appStarter;
+  let game;
   let host;
+  let appStarter;
 
   beforeAll(async () => appStarter = await createAppStarter(5000));
 
   beforeEach(async () => {
     host = appStarter();
-    tableBrowser = await createBrowser(host.port);
-    playerBrowser = await createBrowser(host.port);
-    await tableBrowser.visit(paths.table);
-    await playerBrowser.visit(paths.play);
+    game = await createGame(host.port, 1);
+    ({ tableBrowser, players: [ playerBrowser ] } = game);
   });
 
   it('loads table correctly', async () => {
@@ -25,15 +24,13 @@ describe('concurrent phantom instances', async () => {
   });
 
   it('loads player correctly', async () => {
-    await playerBrowser.click('.begin-button');
     expect(
       await playerBrowser.hasElement('.play-card')
     ).toBe(true);
   });
 
   afterEach(() => {
-    tableBrowser.exit();
-    playerBrowser.exit();
+    game.exit();
     host.server.close();
   });
 });
