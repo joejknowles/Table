@@ -2,10 +2,16 @@ exports[`test component renders as before with 1 player 1`] = `
 <div
   className="App">
   <p
-    className="game-code" />
-  <p
     className="number-of-players">
     1 players joined so far
+  </p>
+  <p
+    className="game-code-message">
+    Enter this game code on another device to play
+  </p>
+  <p
+    className="game-code">
+    code: undefined
   </p>
   <Connect(Component)
     action={
@@ -22,10 +28,16 @@ exports[`test component renders as before with 2 players 1`] = `
 <div
   className="App">
   <p
-    className="game-code" />
-  <p
     className="number-of-players">
     2 players joined so far
+  </p>
+  <p
+    className="game-code-message">
+    Enter this game code on another device to play
+  </p>
+  <p
+    className="game-code">
+    code: undefined
   </p>
   <Connect(Component)
     action={
@@ -42,10 +54,16 @@ exports[`test component renders as before with no players 1`] = `
 <div
   className="App">
   <p
-    className="game-code" />
-  <p
     className="number-of-players">
     0 players joined so far
+  </p>
+  <p
+    className="game-code-message">
+    Enter this game code on another device to play
+  </p>
+  <p
+    className="game-code">
+    code: undefined
   </p>
   <Connect(Component)
     action={
