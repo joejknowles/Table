@@ -9,7 +9,7 @@ export const Waiting = ({ code, players }) => (
   <div className="App">
     <p className="number-of-players">{ res.numOfPlayers(players) }</p>
     <p className="game-code-message" >{ res.enterGameCodeMessage }</p>
-    <p className="game-code" >{ res.gameCode(code) }</p>
+    <p className="game-code" >{ code }</p>
     <DispatchButton
       res={ res.begin }
       action={ { type: 'REQUEST_BEGIN_GAME' } }

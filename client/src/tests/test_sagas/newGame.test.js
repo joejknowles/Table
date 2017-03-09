@@ -21,12 +21,6 @@ describe('newGame', () => {
     );
   });
 
-  it('joins as table', () => {
-    expect(gen.next().value).toEqual(
-      call(tableJoin, socket)
-    );
-  });
-
   it('goes to waiting path', () => {
     expect(gen.next().value).toEqual(
       call(toPath.waiting)
@@ -75,7 +69,7 @@ describe('watchNewGame', () => {
   const channel = jest.fn();
   it('takes every event from channel', () => {
     expect(gen.next(channel).value).toEqual(
-      takeEvery(channel, dispatchNewGame)
+      takeEvery(channel, dispatchNewGame, socket)
     );
   });
 
@@ -94,11 +88,17 @@ describe('dispatchNewGame', () => {
   const newGameData = {
     data: game
   }
-  const gen = dispatchNewGame(newGameData);
+  const gen = dispatchNewGame(socket, newGameData);
 
-  it('creates new game channel', () => {
+  it('dispatches new game action', () => {
     expect(gen.next().value).toEqual(
       put({ type: 'NEW_GAME',  game })
+    );
+  });
+
+  it('joins socket as table', () => {
+    expect(gen.next().value).toEqual(
+      call(tableJoin, socket, '1234')
     );
   });
 

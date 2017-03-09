@@ -7,14 +7,16 @@ const games = [{
 
 const onJoin = (socket) => {
   socket.on('join', (data) => {
-    const game = games.filter((game) => game.code === data.code)[0];
-    socket.join(data);
+    const game = games.filter((game) => game.code === data.gameCode)[0];
+    const code = game ? game.code : '';
+    socket.join(code);
   });
 };
 
+
 const onPlayCard = (socket, io) => {
   socket.on('PLAY_CARD', (data) => {
-    io.in('tables').emit('PLAY_CARD', data);
+    io.in(data.gameCode).emit('PLAY_CARD', data);
   });
 };
 
@@ -24,9 +26,15 @@ const onBegin = (socket, io) => {
   });
 };
 
+const createGame = () => ({
+  status: 0,
+  code: `${ Math.floor(Math.random()*90000) + 10000 }`
+});
+
 const onNew = (socket, io) => {
   socket.on('REQUEST_NEW_GAME', (data) => {
-    const game = games[0];
+    const game = createGame();
+    games.push(game);
     socket.join(game.code, () => {
       io.in(game.code).emit('NEW_GAME', game)
     });

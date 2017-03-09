@@ -13,7 +13,7 @@ describe('clicking the card on the players browser', async () => {
     host = appStarter();
     game = await createGame(host.port, 1);
     ({ tableBrowser, players: [ playerBrowser ] } = game);
-    await playerBrowser.moves.playCard();
+    await playerBrowser.playCard();
   });
 
   it('says no more cards on the player\'s browser', async () => {

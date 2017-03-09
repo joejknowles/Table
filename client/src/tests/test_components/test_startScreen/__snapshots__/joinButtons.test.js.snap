@@ -2,6 +2,7 @@ exports[`test PlayerJoinButton renders as before 1`] = `
 <Connect(Component)
   action={
     Object {
+      "gameCode": "",
       "type": "PLAYER_JOIN",
     }
   }

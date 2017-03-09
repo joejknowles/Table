@@ -17,6 +17,6 @@ export const PlayerJoinButton = () => (
   <DispatchButton
     res={ res.playerJoinButton }
     className="player-join-button"
-    action={ actions.joinPlayer }
+    action={ actions.joinPlayer() }
   />
 );

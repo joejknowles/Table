@@ -10,9 +10,7 @@ exports[`test component renders as before with 1 player 1`] = `
     Enter this game code on another device to play
   </p>
   <p
-    className="game-code">
-    code: undefined
-  </p>
+    className="game-code" />
   <Connect(Component)
     action={
       Object {
@@ -36,9 +34,7 @@ exports[`test component renders as before with 2 players 1`] = `
     Enter this game code on another device to play
   </p>
   <p
-    className="game-code">
-    code: undefined
-  </p>
+    className="game-code" />
   <Connect(Component)
     action={
       Object {
@@ -62,9 +58,7 @@ exports[`test component renders as before with no players 1`] = `
     Enter this game code on another device to play
   </p>
   <p
-    className="game-code">
-    code: undefined
-  </p>
+    className="game-code" />
   <Connect(Component)
     action={
       Object {

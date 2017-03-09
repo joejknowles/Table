@@ -44,6 +44,12 @@ export default async (customPort) => {
     ), text)
   );
 
+  const getInnerText = async (selector) => (
+    await page.invokeMethod('evaluate', (selector) => (
+      document.querySelector(selector).innerHTML
+    ), selector)
+  );
+
   return {
     visit,
     pageContent,
@@ -52,6 +58,7 @@ export default async (customPort) => {
     find,
     hasElement,
     currentPath,
-    containsText
+    containsText,
+    getInnerText
   };
 };

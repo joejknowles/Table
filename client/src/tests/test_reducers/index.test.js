@@ -30,8 +30,12 @@ describe('game code reducer', () => {
     expect(gameCode(undefined, {})).toEqual('')
   ));
 
-  it('saves game code', () => (
+  it('saves game code from new game', () => (
     expect(gameCode('', { type: 'NEW_GAME', game})).toEqual(game.code)
+  ));
+
+  it('saves game code from player join', () => (
+    expect(gameCode('', { type: 'PLAYER_JOIN', gameCode: game.code})).toEqual(game.code)
   ));
 });
 

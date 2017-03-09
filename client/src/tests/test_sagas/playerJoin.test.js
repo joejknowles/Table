@@ -10,11 +10,11 @@ const socket = {
 }
 
 describe('playerJoin', () => {
-  const gen = playerJoin(socket);
+  const gen = playerJoin(socket, { gameCode: '1234' });
 
   it('joins player room', () => {
     expect(gen.next().value).toEqual(
-      call(events.joinPlayersRoom, socket)
+      call(events.joinPlayersRoom, socket, '1234')
     );
   });
 

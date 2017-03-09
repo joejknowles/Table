@@ -8,6 +8,6 @@ export const createTable = async (port) => {
   await tableBrowser.click('.new-game');
   return {
     ...tableBrowser,
-    moves: createSharedMoves(tableBrowser)
+    ...createSharedMoves(tableBrowser)
   };
 };

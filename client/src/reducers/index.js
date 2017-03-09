@@ -8,9 +8,16 @@ export const tablePile = (state = [], action) => (
   action.type === 'ADD_CARD' ? [ ...state, action.card ] : state
 );
 
-export const gameCode = (state = '', action) => (
-  action.type === 'NEW_GAME' ? action.game.code : state
-);
+export const gameCode = (state = '', action) => {
+  switch (action.type) {
+    case 'NEW_GAME':
+      return action.game.code;
+    case 'PLAYER_JOIN':
+      return action.gameCode || '';
+    default:
+      return state;
+  }
+};
 
 export const clientType = (state = '', action) => {
   switch (action.type) {

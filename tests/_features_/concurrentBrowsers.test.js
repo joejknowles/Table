@@ -1,6 +1,5 @@
 import createGame from './setup/users/fullGame';
 import createAppStarter from './setup/server';
-import paths from '../../client/src/shared/paths';
 
 describe('concurrent phantom instances', async () => {
   let tableBrowser;

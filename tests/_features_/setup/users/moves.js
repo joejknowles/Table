@@ -2,5 +2,13 @@ export const createSharedMoves = (browser) => {
   const clickBegin = async () => (
     await browser.click('.begin-button')
   );
-  return { clickBegin };
+
+  const getGameCode = async () => (
+    await browser.getInnerText('.game-code')
+  );
+
+  return {
+    clickBegin,
+    getGameCode
+  };
 };

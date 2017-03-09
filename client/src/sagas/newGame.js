@@ -8,13 +8,14 @@ export const createNewGameChannel = (socket) => {
   return createChannelForEvent(socket, 'NEW_GAME');
 };
 
-export function* dispatchNewGame(response) {
+export function* dispatchNewGame(socket, response) {
   yield put({ type: 'NEW_GAME', game: response.data });
+  yield call(tableJoin, socket, response.data.code);
 }
 
 export function* watchNewGame(socket) {
   const newGameChannel = yield call(createNewGameChannel, socket);
-  yield takeEvery(newGameChannel, dispatchNewGame);
+  yield takeEvery(newGameChannel, dispatchNewGame, socket);
 }
 
 export function* createNewGame(socket) {
@@ -24,6 +25,5 @@ export function* createNewGame(socket) {
 
 export function* newGame(socket) {
   yield fork(createNewGame, socket);
-  yield call(tableJoin, socket);
   yield call(toPath.waiting);
 }

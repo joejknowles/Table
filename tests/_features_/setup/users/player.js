@@ -12,12 +12,11 @@ const createPlayerMoves = (playerBrowser) => {
   };
 }
 
-export const addPlayer = async (port) => {
+export const addPlayer = async (port, gameCode = '') => {
   const playerBrowser = await createBrowser(port);
-  await playerBrowser.visit(paths.startScreen);
-  await playerBrowser.click('.player-join-button');
+  await playerBrowser.visit(paths.playWithCode(gameCode));
   return {
     ...playerBrowser,
-    moves: createPlayerMoves(playerBrowser)
+    ...createPlayerMoves(playerBrowser)
   };
 };

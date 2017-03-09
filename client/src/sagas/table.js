@@ -18,13 +18,13 @@ export function* watchCards(socket) {
   yield takeEvery(channel, addCard);
 }
 
-export function* connectAsTable(socket) {
-  yield call(events.joinTablesRoom, socket);
+export function* connectAsTable(socket, gameCode) {
+  yield call(events.joinTablesRoom, socket, gameCode);
   yield call(watchCards, socket);
 }
 
-export function* tableJoin(socket) {
-  yield fork(connectAsTable, socket);
+export function* tableJoin(socket, gameCode) {
+  yield fork(connectAsTable, socket, gameCode);
   yield takeEvery('BEGIN_GAME', tableBegin, socket);
   yield call(toPath.waiting);
 }

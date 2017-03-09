@@ -27,17 +27,18 @@ export class Play extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, { params: { gameCode } }) => ({
   hand: handSelector(state),
-  clientType: state.clientType
+  clientType: state.clientType,
+  gameCode
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  joinAsPlayer: () => dispatch({ type: 'PLAYER_JOIN' })
+  joinAsPlayer: (gameCode) => dispatch({ type: 'PLAYER_JOIN', gameCode })
 });
 
-const merge = ({hand, clientType}, { joinAsPlayer }) => {
-  const ensureConnected = () => clientType ? null : joinAsPlayer();
+const merge = ({ hand, clientType, gameCode }, { joinAsPlayer }) => {
+  const ensureConnected = () => clientType ? null : joinAsPlayer(gameCode);
   return ({
     hand, ensureConnected
   });

@@ -1,5 +1,5 @@
-export const joinPlayer = ({
-  type: 'PLAYER_JOIN'
+export const joinPlayer = (gameCode = '') => ({
+  type: 'PLAYER_JOIN', gameCode
 });
 
 export const joinTable = ({

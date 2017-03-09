@@ -12,12 +12,14 @@ const socket = {
   emit: jest.fn()
 }
 
+const gameCode = '1234';
+
 describe('tableJoin', () => {
-  const gen = tableJoin(socket);
+  const gen = tableJoin(socket, gameCode);
 
   it('calls connect as table', () => {
     expect(gen.next().value).toEqual(
-      fork(connectAsTable, socket)
+      fork(connectAsTable, socket, gameCode)
     );
   });
 
@@ -41,11 +43,11 @@ describe('tableJoin', () => {
 });
 
 describe('connectAsTable', () => {
-  const gen = connectAsTable(socket);
+  const gen = connectAsTable(socket, gameCode);
 
   it('joins table room', () => {
     expect(gen.next().value).toEqual(
-      call(events.joinTablesRoom, socket)
+      call(events.joinTablesRoom, socket, gameCode)
     );
   });
 
