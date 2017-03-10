@@ -44,11 +44,11 @@ describe('client type', () => {
     expect(clientType(undefined, {})).toEqual('')
   ));
 
-  it('', () => (
+  it('becomes player', () => (
     expect(clientType('', { type: 'PLAYER_JOIN' })).toEqual('PLAYER')
   ));
 
-  it('', () => (
+  it('becomes table', () => (
     expect(clientType('', { type: 'TABLE_JOIN' })).toEqual('TABLE')
   ));
 });
