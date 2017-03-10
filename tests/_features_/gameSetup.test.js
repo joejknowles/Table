@@ -28,23 +28,36 @@ describe('setting up a game', () => {
     ).toBe(true);
   });
 
-  it('player joins by entering code in url', async () => {
-    await player1Browser.visit(`${paths.play}/${gameCode}`);
+  it('says 0 players', async () => {
+    const text = await tableBrowser.getInnerText('.number-of-players');
     expect(
-      await tableBrowser.hasElement('.number-of-players')
+      text.includes('0')
     ).toBe(true);
   });
 
-  xit('says 1 player', async () => {
+  it('player joins by entering code in url', async () => {
+    await player1Browser.visit(`${paths.play}/${gameCode}`);
+    expect(
+      await player1Browser.hasElement('.number-of-players')
+    ).toBe(true);
+  });
 
+  it('says 1 player', async () => {
+    const text = await tableBrowser.getInnerText('.number-of-players');
+    expect(
+      text.includes('1')
+    ).toBe(true);
   });
 
   xit('player joins by entering code on first screen', async () => {
 
   });
 
-  xit('says 2 players', async () => {
-
+  xit('says 2 player', async () => {
+    const text = await tableBrowser.getInnerText('.number-of-players');
+    expect(
+      text.includes('1')
+    ).toBe(true);
   });
 
   xit('player joins by going to /play then entering code', async () => {

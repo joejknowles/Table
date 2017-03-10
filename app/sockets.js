@@ -1,15 +1,16 @@
 const socketIo = require('socket.io');
 
-const games = [{
-  status: 0,
-  code: '1234'
-}];
+const games = [];
 
-const onJoin = (socket) => {
+const onJoin = (socket, io) => {
   socket.on('join', (data) => {
     const game = games.filter((game) => game.code === data.gameCode)[0];
-    const code = game ? game.code : '';
-    socket.join(code);
+    if (game) {
+      socket.join(game.code, () => {
+        game.playerCount++;
+        io.in(code).emit('PLAYER_ADDED', { game });
+      });
+    }
   });
 };
 
@@ -28,7 +29,8 @@ const onBegin = (socket, io) => {
 
 const createGame = () => ({
   status: 0,
-  code: `${ Math.floor(Math.random()*90000) + 10000 }`
+  code: `${ Math.floor(Math.random()*90000) + 10000 }`,
+  playerCount: 0
 });
 
 const onNew = (socket, io) => {
@@ -44,7 +46,7 @@ const onNew = (socket, io) => {
 module.exports = {
   addHandlers: (io) => {
     io.on('connection', function(socket) {
-      onJoin(socket);
+      onJoin(socket, io);
       onBegin(socket, io);
       onPlayCard(socket, io);
       onNew(socket, io);
