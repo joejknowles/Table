@@ -20,7 +20,7 @@ describe('clicking the card on the players browser', async () => {
     expect(
       await playerBrowser.containsText(res.noCardsMessage)
     ).toBe(true);
-  });
+  }, 30000);
 
   it('stops displaying button on the player\'s browser', async () => {
     expect(
