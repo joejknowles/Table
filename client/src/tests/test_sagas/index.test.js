@@ -7,6 +7,7 @@ import {
 import { playerJoin } from '../../sagas/play';
 import { tableJoin } from '../../sagas/table';
 import { watchBegin } from '../../sagas/beginGame';
+import { watchAllSocketEvents } from '../../sagas/socketEvents';
 
 import { takeEvery, fork, call } from 'redux-saga/effects';
 
@@ -14,6 +15,12 @@ const socket = jest.fn();
 
 describe('watchJoin', () => {
   const gen = watchJoin(socket);
+
+  it('forks watchAllSocketEvents', () => {
+    expect(gen.next().value).toEqual(
+      fork(watchAllSocketEvents, socket, [ 'PLAYER_ADDED' ])
+    );
+  });
 
   it('forks watchNewGame', () => {
     expect(gen.next().value).toEqual(

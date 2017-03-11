@@ -7,11 +7,11 @@ export default () => {
 };
 
 export const joinTablesRoom = (socket, gameCode) => {
-  socket.emit('join', { clientType: 'table', gameCode });
+  socket.emit('join', { clientType: 'TABLE', gameCode });
 };
 
 export const joinPlayersRoom = (socket, gameCode) =>
-  socket.emit('join', { clientType: 'player', gameCode });
+  socket.emit('join', { clientType: 'PLAYER', gameCode });
 
 export const playCard = (socket, card) =>
   socket.emit('PLAY_CARD', card);

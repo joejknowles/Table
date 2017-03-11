@@ -1,4 +1,4 @@
-import { createChannelForEvent } from './index';
+import { createChannelForEvent } from './socketEvents';
 import { put, call, takeEvery } from 'redux-saga/effects';
 
 export const createBeginGameChannel = (socket) => {

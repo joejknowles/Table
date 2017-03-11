@@ -85,10 +85,7 @@ describe('dispatchNewGame', () => {
     code: '1234',
     status: 0
   }
-  const newGameData = {
-    data: game
-  }
-  const gen = dispatchNewGame(socket, newGameData);
+  const gen = dispatchNewGame(socket, game);
 
   it('dispatches new game action', () => {
     expect(gen.next().value).toEqual(

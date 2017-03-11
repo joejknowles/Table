@@ -3,7 +3,7 @@ exports[`test component renders as before with 1 player 1`] = `
   className="App">
   <p
     className="number-of-players">
-    1 players joined so far
+    undefined players joined so far
   </p>
   <p
     className="game-code-message">
@@ -27,7 +27,7 @@ exports[`test component renders as before with 2 players 1`] = `
   className="App">
   <p
     className="number-of-players">
-    2 players joined so far
+    undefined players joined so far
   </p>
   <p
     className="game-code-message">
@@ -51,7 +51,7 @@ exports[`test component renders as before with no players 1`] = `
   className="App">
   <p
     className="number-of-players">
-    0 players joined so far
+    undefined players joined so far
   </p>
   <p
     className="game-code-message">

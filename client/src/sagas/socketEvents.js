@@ -10,8 +10,8 @@ export const createChannelForEvent = (socket, eventName) => {
   });
 };
 
-export function* dispatchSocketEvent(eventName, data) {
-  yield put({ type: eventName, ...data })
+export function* dispatchSocketEvent(eventName, data = {}) {
+  yield put({ type: eventName, ...data });
 }
 
 export function* watchAllSocketEvents(socket, socketEvents) {

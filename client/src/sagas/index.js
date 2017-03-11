@@ -1,20 +1,11 @@
 import { takeEvery, fork, call } from 'redux-saga/effects';
-import { eventChannel } from 'redux-saga';
 import createWebSocketConnection from '../api/sockets';
 
 import { playerJoin } from './play';
 import { tableJoin } from './table';
 import { newGame } from './newGame';
 import { watchBegin } from './beginGame';
-
-export const createChannelForEvent = (socket, event) => {
-  return eventChannel(emit => {
-    socket.on(event, (data) => {
-      emit({ data });
-    });
-    return () => socket.off();
-  });
-};
+import { watchAllSocketEvents } from './socketEvents';
 
 export function* watchPlayerJoin(socket) {
   yield takeEvery('PLAYER_JOIN', playerJoin, socket);
@@ -29,6 +20,7 @@ export function* watchNewGame(socket) {
 }
 
 export function* watchJoin(socket) {
+  yield fork(watchAllSocketEvents, socket, [ 'PLAYER_ADDED' ]);
   yield fork(watchNewGame, socket);
   yield fork(watchPlayerJoin, socket);
   yield fork(watchTableJoin, socket);
