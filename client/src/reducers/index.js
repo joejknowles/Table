@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { playerCount } from './game';
 
 export const hand = (state = 1, action) => (
   action.type === 'PLAY_CARD' ? state - 1 : state
@@ -31,7 +32,7 @@ export const clientType = (state = '', action) => {
 };
 
 export default combineReducers({
-  hand, tablePile, clientType, gameCode
+  hand, tablePile, clientType, gameCode, playerCount
 });
 
 
@@ -45,3 +46,5 @@ export const tablePileTopCardSelector = (state) => (
 );
 
 export const gameCodeSelector = (state) => state.gameCode;
+
+export const playerCountSelector = (state) => state.playerCount;

@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import { DispatchButton } from './common/buttons';
 import res from '../resources/pages/waiting';
-import { gameCodeSelector } from '../reducers';
+import { gameCodeSelector, playerCountSelector } from '../reducers';
 
-export const Waiting = ({ code, players }) => (
+export const Waiting = ({ code, playerCount }) => (
   <div className="App">
-    <p className="number-of-players">{ res.numOfPlayers(players) }</p>
+    <p className="number-of-players">{ res.numOfPlayers(playerCount) }</p>
     <p className="game-code-message" >{ res.enterGameCodeMessage }</p>
     <p className="game-code" >{ code }</p>
     <DispatchButton
@@ -19,7 +19,8 @@ export const Waiting = ({ code, players }) => (
 );
 
 const mapStateToProps = (state) => ({
-  code: gameCodeSelector(state)
+  code: gameCodeSelector(state),
+  playerCount: playerCountSelector(state)
 });
 
 export default connect(mapStateToProps)(Waiting);
