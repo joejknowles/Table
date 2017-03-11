@@ -27,12 +27,12 @@ export default async (customPort) => {
     return element.className !== undefined && element.className.length > 0;
   };
 
-  const click = async (selector) => (
-    await page.invokeMethod('evaluate', (selector) => {
+  const click = async (selector) => {
+    return await page.invokeMethod('evaluate', (selector) => {
       const element = document.querySelector(selector);
       return element.click();
     }, selector)
-  );
+  };
 
   const currentPath = async () => (
     await page.evaluate(() => (window.location.pathname))

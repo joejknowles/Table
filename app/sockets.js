@@ -4,26 +4,26 @@ const games = [];
 
 const onJoin = (socket, io) => {
   socket.on('join', (data) => {
+    data = data || {};
     const game = games.filter((game) => game.code === data.gameCode)[0];
     if (game) {
       socket.join(game.code, () => {
-        game.playerCount++;
-        io.in(code).emit('PLAYER_ADDED', { game });
+        if (data.clientType === 'PLAYER') game.playerCount++;
+        io.in(game.code).emit('PLAYER_ADDED', { game });
       });
     }
   });
 };
 
-
 const onPlayCard = (socket, io) => {
-  socket.on('PLAY_CARD', (data) => {
-    io.in(data.gameCode).emit('PLAY_CARD', data);
+  socket.on('PLAY_CARD', (data = {}) => {
+    io.in(data.gameCode).emit('PLAY_CARD', {});
   });
 };
 
 const onBegin = (socket, io) => {
-  socket.on('REQUEST_BEGIN_GAME', (data) => {
-    io.emit('BEGIN_GAME', data);
+  socket.on('REQUEST_BEGIN_GAME', () => {
+    io.emit('BEGIN_GAME', {});
   });
 };
 
