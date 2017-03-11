@@ -17,34 +17,16 @@ describe('joining a game', () => {
   });
 
   describe('clicking "join as player" button', () =>{
-    it('shows a play card button', async () => {
+    it('takes you to waiting page', async () => {
       await browser.click('.player-join-button');
-      await browser.click('.begin-button');
-      expect(
-        await browser.hasElement('.play-card')
-      ).toBe(true);
-    });
-
-    it('takes you to play page', async () => {
-      await browser.click('.player-join-button');
-      await browser.click('.begin-button');
-      expect(await browser.currentPath()).toBe(paths.play);
+      expect(await browser.currentPath()).toBe(paths.waiting);
     });
   });
 
   describe('clicking "join as table" button', () => {
-    it( 'shows a deck of cards', async () => {
+    it('takes you to waiting page', async () => {
       await browser.click('.table-join-button');
-      await browser.click('.begin-button');
-      expect(
-        await browser.hasElement('.pile')
-      ).toBe(true);
-    });
-
-    it('takes you to table page', async () => {
-      await browser.click('.table-join-button');
-      await browser.click('.begin-button');
-      expect(await browser.currentPath()).toBe(paths.table);
+      expect(await browser.currentPath()).toBe(paths.waiting);
     });
   });
 

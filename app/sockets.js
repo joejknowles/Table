@@ -22,8 +22,8 @@ const onPlayCard = (socket, io) => {
 };
 
 const onBegin = (socket, io) => {
-  socket.on('REQUEST_BEGIN_GAME', () => {
-    io.emit('BEGIN_GAME', {});
+  socket.on('REQUEST_BEGIN_GAME', (data) => {
+    io.in(data.gameCode).emit('BEGIN_GAME', {});
   });
 };
 
