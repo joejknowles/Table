@@ -8,7 +8,7 @@ export const recheck = async(boolTest) => {
     if (result) {
       return result
     } else {
-      await sleep(500);
+      await sleep(2000);
       result = await boolTest();
     }
   }
