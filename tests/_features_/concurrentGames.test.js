@@ -14,7 +14,7 @@ describe('concurrent games', async () => {
     game1 = await createGame(host.port, 1);
     game2 = await createGame(host.port, 1);
     await game1.players[0].playCard();
-  }, 20000);
+  }, 25000);
 
   it('table shows card in first game', async () => {
     expect(
