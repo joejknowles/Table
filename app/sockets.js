@@ -1,5 +1,5 @@
 const socketIo = require('socket.io');
-
+const cards = require('./game/cards');
 const games = [];
 
 const onJoin = (socket, io) => {
@@ -17,7 +17,7 @@ const onJoin = (socket, io) => {
 
 const onPlayCard = (socket, io) => {
   socket.on('PLAY_CARD', (data = {}) => {
-    io.in(data.gameCode).emit('PLAY_CARD', {});
+    io.in(data.gameCode).emit('PLAY_CARD', cards.pop());
   });
 };
 

@@ -2,7 +2,9 @@ exports[`test component renders as before with top card 1`] = `
 <div
   className="pile">
   <div
-    className="card" />
+    className="card">
+    undefined undefined
+  </div>
 </div>
 `;
 

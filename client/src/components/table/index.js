@@ -5,7 +5,10 @@ import { tablePileTopCardSelector } from '../../reducers';
 
 export const Table = ({ topCard }) => (
   <div className="pile">
-    { topCard ? <div className="card" /> : null }
+    { topCard ?
+      <div className="card">
+        { `${ topCard.rank } ${ topCard.suit }` }
+      </div> : null }
   </div>
 );
 
