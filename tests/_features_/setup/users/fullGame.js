@@ -6,9 +6,8 @@ export default async (port, numberOfPlayers) => {
   const gameCode = await tableBrowser.getGameCode();
   const players = [];
   for ( let i = 0; i < numberOfPlayers; i++ ) {
-    await players.push(
-      await addPlayer(port, gameCode)
-    );
+    const player = await addPlayer(port, gameCode);
+    players.push(player);
   }
   await tableBrowser.clickBegin();
   const exit = () => {
