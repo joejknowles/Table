@@ -14,7 +14,7 @@ describe('clicking the card on the players browser', async () => {
     game = await createGame(host.port, 1);
     ({ tableBrowser, players: [ playerBrowser ] } = game);
     await playerBrowser.playCard();
-  }, 30000);
+  }, 50000);
 
   it('says no more cards on the player\'s browser', async () => {
     expect(
