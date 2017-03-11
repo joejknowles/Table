@@ -15,6 +15,8 @@ export default async (port, numberOfPlayers) => {
     tableBrowser.exit();
     players.forEach(player => player.exit());
   };
+
+  if (!await players[0].find('.play-card')) throw new Error('not loaded yet');
   return {
     tableBrowser,
     players,
