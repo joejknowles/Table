@@ -6,7 +6,10 @@ import { setGameCode } from '../../actions';
 
 export const JoinGame = ({ setGameCode }) => (
   <div  className="join-game">
-    <input onChange={ (input) => setGameCode(input.target.value) } />
+    <input
+      className="enter-game-code"
+      onChange={ (input) => setGameCode(input.target.value)}
+    />
     <div>
       <PlayerJoinButton />
       <TableJoinButton />

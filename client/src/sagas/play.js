@@ -15,7 +15,11 @@ export function* playerBegin(socket) {
 }
 
 export function* playerJoin(socket, action) {
-  yield call(events.joinPlayersRoom, socket, action.gameCode);
+  let { gameCode } = action;
+  if (!gameCode) {
+    gameCode = yield select(gameCodeSelector);
+  }
+  yield call(events.joinPlayersRoom, socket, gameCode);
   yield takeEvery('BEGIN_GAME', playerBegin, socket);
   yield call(toPath.waiting);
 }

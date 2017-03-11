@@ -49,14 +49,17 @@ describe('setting up a game', () => {
     ).toBe(true);
   });
 
-  xit('player joins by entering code on first screen', async () => {
-
+  it('player joins by entering code on first screen', async () => {
+    await player2Browser.visit(paths.startScreen);
+    await player2Browser.inputText('.enter-game-code', gameCode);
+    await player2Browser.click('.player-join-button');
+    expect(await player2Browser.currentPath()).toBe(paths.waiting);
   });
 
-  xit('says 2 player', async () => {
-    const text = await tableBrowser.getInnerText('.number-of-players');
+  it('says 2 player', async () => {
+    const text = await player2Browser.getInnerText('.number-of-players');
     expect(
-      text.includes('1')
+      text.includes('2')
     ).toBe(true);
   });
 

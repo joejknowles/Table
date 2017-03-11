@@ -2,6 +2,7 @@ exports[`test component renders as before 1`] = `
 <div
   className="join-game">
   <input
+    className="enter-game-code"
     onChange={[Function]} />
   <div>
     <Unknown />

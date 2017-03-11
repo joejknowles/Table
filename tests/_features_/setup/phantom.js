@@ -50,6 +50,15 @@ export default async (customPort) => {
     ), selector)
   );
 
+  const inputText = async (selector, text) => (
+    await page.invokeMethod('evaluate', (selector, text) => {
+      const element = document.querySelector(selector);
+      element.value = text;
+      var event = new Event('input', { bubbles: true });
+      element.dispatchEvent(event);
+    }, selector, text)
+  );
+
   return {
     visit,
     pageContent,
@@ -59,6 +68,7 @@ export default async (customPort) => {
     hasElement,
     currentPath,
     containsText,
-    getInnerText
+    getInnerText,
+    inputText
   };
 };
