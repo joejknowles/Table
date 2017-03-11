@@ -1,4 +1,5 @@
 import phantom from 'phantom';
+import { recheck } from './asyncHelpers';
 
 export default async (customPort) => {
   const instance = await phantom.create();
@@ -23,8 +24,10 @@ export default async (customPort) => {
   );
 
   const hasElement = async (selector) => {
-    const element = await find(selector);
-    return element.className !== undefined && element.className.length > 0;
+    return await recheck(async () => {
+      const element = await find(selector);
+      return element.className !== undefined && element.className.length > 0;
+    });
   };
 
   const click = async (selector) => {
@@ -39,9 +42,11 @@ export default async (customPort) => {
   );
 
   const containsText = async (text) => (
-    await page.invokeMethod('evaluate', (text) => (
+    await recheck(async () => (
+      await page.invokeMethod('evaluate', (text) => (
       document.documentElement.innerHTML.indexOf(text) > (-1)
-    ), text)
+      ), text)
+    ))
   );
 
   const getInnerText = async (selector) => (
