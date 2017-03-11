@@ -40,7 +40,7 @@ export default async (customPort) => {
 
   const containsText = async (text) => (
     await page.invokeMethod('evaluate', (text) => (
-      document.documentElement.innerHTML.indexOf(text) > 0
+      document.documentElement.innerHTML.indexOf(text) > (-1)
     ), text)
   );
 
@@ -52,10 +52,10 @@ export default async (customPort) => {
 
   const inputText = async (selector, text) => (
     await page.invokeMethod('evaluate', (selector, text) => {
-      const element = document.querySelector(selector);
-      element.value = text;
+      const inputElement = document.querySelector(selector);
+      inputElement.value = text;
       var event = new Event('input', { bubbles: true });
-      element.dispatchEvent(event);
+      inputElement.dispatchEvent(event);
     }, selector, text)
   );
 

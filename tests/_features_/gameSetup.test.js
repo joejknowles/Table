@@ -20,7 +20,7 @@ describe('setting up a game', () => {
     await tableBrowser.visit(paths.startScreen);
     await tableBrowser.click('.new-game');
     gameCode = (await tableBrowser.find('.game-code')).innerHTML;
-  });
+  }, 20000);
 
   it('displays a game code', async () => {
     expect(
