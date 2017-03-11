@@ -1,5 +1,6 @@
 import { createTable } from './table';
 import { addPlayer } from './player';
+import { sleep } from '../asyncHelpers';
 
 export default async (port, numberOfPlayers) => {
   const tableBrowser = await createTable(port);
@@ -15,7 +16,10 @@ export default async (port, numberOfPlayers) => {
     players.forEach(player => player.exit());
   };
 
-  if (!await players[0].find('.play-card')) throw new Error('not loaded yet');
+  if (!await players[0].find('.play-card')) {
+    await sleep(1000);
+    if (!await players[0].find('.play-card')) throw new Error('still not loaded, second attempt');
+  }
   return {
     tableBrowser,
     players,
