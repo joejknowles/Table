@@ -14,7 +14,7 @@ describe('concurrent phantom instances', async () => {
     host = appStarter();
     game = await createGame(host.port, 1);
     ({ tableBrowser, players: [ playerBrowser ] } = game);
-  });
+  }, 20000);
 
   it('loads table correctly', async () => {
     expect(
