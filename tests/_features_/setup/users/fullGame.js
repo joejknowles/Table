@@ -10,19 +10,29 @@ export default async (port, numberOfPlayers) => {
     const player = await addPlayer(port, gameCode);
     players.push(player);
   }
+
+  let isLoaded = await recheck(async () => {
+    const isLoaded = await tableBrowser.find('.begin-button');
+    return !!isLoaded;
+  });
+
+  if (!isLoaded) {
+    throw new Error('table still not loaded, after 5 attempts');
+  }
+
   await tableBrowser.clickBegin();
   const exit = () => {
     tableBrowser.exit();
     players.forEach(player => player.exit());
   };
 
-  const isLoaded = await recheck(async () => {
+  isLoaded = await recheck(async () => {
     const isLoaded = await players[0].find('.play-card');
     return !!isLoaded;
   });
 
   if (!isLoaded) {
-    throw new Error('still not loaded, after 5 attempts');
+    throw new Error('player still not loaded, after 5 attempts');
   }
 
   return {
