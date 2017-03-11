@@ -24,8 +24,8 @@ describe('clicking the card on the players browser', async () => {
 
   it('stops displaying button on the player\'s browser', async () => {
     expect(
-      await playerBrowser.hasElement('.play-card')
-    ).toBe(false);
+      await playerBrowser.hasElementNot('.play-card')
+    ).toBe(true);
   });
 
   it('displays the card on the table browser', async () => {

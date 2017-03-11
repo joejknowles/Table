@@ -30,6 +30,13 @@ export default async (customPort) => {
     });
   };
 
+  const hasElementNot = async (selector) => {
+    return await recheck(async () => {
+      const element = await find(selector);
+      return !(element.className !== undefined && element.className.length > 0);
+    });
+  };
+
   const click = async (selector) => {
     return await page.invokeMethod('evaluate', (selector) => {
       const element = document.querySelector(selector);
@@ -71,6 +78,7 @@ export default async (customPort) => {
     click,
     find,
     hasElement,
+    hasElementNot,
     currentPath,
     containsText,
     getInnerText,
