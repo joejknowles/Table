@@ -13,3 +13,7 @@ export const requestNewGame = ({
 export const addCard = (card) => ({
   type: 'ADD_CARD', card
 });
+
+export const setGameCode = (gameCode) => ({
+  type: 'SET_GAME_CODE', gameCode
+});

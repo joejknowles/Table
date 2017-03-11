@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { playerCount } from './game';
+import { playerCount, gameCode } from './game';
 
 export const hand = (state = 1, action) => (
   action.type === 'PLAY_CARD' ? state - 1 : state
@@ -8,17 +8,6 @@ export const hand = (state = 1, action) => (
 export const tablePile = (state = [], action) => (
   action.type === 'ADD_CARD' ? [ ...state, action.card ] : state
 );
-
-export const gameCode = (state = '', action) => {
-  switch (action.type) {
-    case 'NEW_GAME':
-      return action.game.code;
-    case 'PLAYER_JOIN':
-      return action.gameCode || '';
-    default:
-      return state;
-  }
-};
 
 export const clientType = (state = '', action) => {
   switch (action.type) {

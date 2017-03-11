@@ -1,9 +1,20 @@
 import React from 'react';
-import { PlayerJoinButton, TableJoinButton } from './joinButtons';
+import { connect } from 'react-redux';
 
-export default () => (
+import { PlayerJoinButton, TableJoinButton } from './joinButtons';
+import { setGameCode } from '../../actions';
+
+export const JoinGame = ({ setGameCode }) => (
   <div  className="join-game">
-    <PlayerJoinButton />
-    <TableJoinButton />
+    <input onChange={ (input) => setGameCode(input.target.value) } />
+    <div>
+      <PlayerJoinButton />
+      <TableJoinButton />
+    </div>
   </div>
 );
+
+export default connect(
+  undefined,
+  dispatch => ({ setGameCode: (value) => dispatch(setGameCode(value)) })
+)(JoinGame)
