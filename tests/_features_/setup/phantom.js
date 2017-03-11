@@ -27,7 +27,7 @@ export default async (customPort) => {
     return await recheck(async () => {
       const element = await find(selector);
       return element.className !== undefined && element.className.length > 0;
-    });
+    }, `has element: ${ selector }`);
   };
 
   const hasElementNot = async (selector) => {
@@ -56,7 +56,7 @@ export default async (customPort) => {
       await page.invokeMethod('evaluate', (text) => (
       document.documentElement.innerHTML.indexOf(text) > (-1)
       ), text)
-    ))
+    ), `containsText: ${ text }`)
   );
 
   const getInnerText = async (selector) => (
