@@ -14,7 +14,7 @@ export default async (port, numberOfPlayers) => {
   let isLoaded = await recheck(async () => {
     const isLoaded = await tableBrowser.find('.begin-button');
     return !!isLoaded;
-  });
+  }, ' load tableBrowser ');
 
   if (!isLoaded) {
     throw new Error('table still not loaded, after 5 attempts');
@@ -29,7 +29,7 @@ export default async (port, numberOfPlayers) => {
   isLoaded = await recheck(async () => {
     const isLoaded = await players[0].find('.play-card');
     return !!isLoaded;
-  });
+  }, 'load player browser');
 
   if (!isLoaded) {
     throw new Error('player still not loaded, after 5 attempts');
