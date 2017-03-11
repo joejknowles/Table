@@ -20,13 +20,13 @@ describe('concurrent browsers with phantom instances', async () => {
     expect(
       await tableBrowser.hasElement('.pile')
     ).toBe(true);
-  });
+  }, 15000);
 
   it('loads player correctly', async () => {
     expect(
       await playerBrowser.hasElement('.play-card')
     ).toBe(true);
-  });
+  }, 15000);
 
   afterEach(() => {
     game.exit();

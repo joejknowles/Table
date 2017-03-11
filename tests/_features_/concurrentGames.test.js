@@ -20,13 +20,13 @@ describe('concurrent games', async () => {
     expect(
       await game1.tableBrowser.hasElement('.card')
     ).toBe(true);
-  });
+  }, 15000);
 
   it('table doesn\'t show card in second game', async () => {
     expect(
       await game2.tableBrowser.hasElementNot('.card')
     ).toBe(true);
-  });
+  }, 15000);
 
   afterEach(() => {
     game1.exit();
