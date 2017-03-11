@@ -5,10 +5,11 @@ node_js:
   - "6.1"
   - "7.2.1"
 install:
-  - npm install
+  - yarn
   - cd client
-  - npm install
+  - yarn
   - cd ..
 script:
-  - npm run test-client
-  - npm run test-ci
+  - yarn test
+  - cd client
+  - yarn test
