@@ -1,7 +1,7 @@
 import createGame from './setup/users/fullGame';
 import createAppStarter from './setup/server';
 
-describe('concurrent phantom instances', async () => {
+describe('concurrent browsers with phantom instances', async () => {
   let tableBrowser;
   let playerBrowser;
   let game;
