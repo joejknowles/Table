@@ -1,12 +1,14 @@
+const gameStatus = require('../../client/src/shared/constants/gameStatus');
 const data = require('./data');
 const gamesByCode = data.gamesByCode;
 const players = data.players;
 
 const createGame = () => ({
-  status: 0,
+  status: gameStatus.setup,
   code: `${ Math.floor(Math.random()*90000) + 10000 }`,
   playerCount: 0,
-  players: []
+  players: [],
+  turn: 0
 });
 
 const createPlayer = (id) => {
@@ -17,6 +19,15 @@ const createPlayer = (id) => {
 
 const getGame = (code) => {
   return gamesByCode[code];
+}
+
+const startGame = (code) => {
+  getGame(code).status = gameStatus.ongoing;
+}
+
+const currentPlayer = (code) => {
+  const game = getGame(code);
+  return game.players[game.turn];
 }
 
 module.exports = {
@@ -31,5 +42,7 @@ module.exports = {
     game.playerCount++;
     game.players.push(playerId);
     players[playerId] = createPlayer(playerId);
-  }
+  },
+  startGame: startGame,
+  currentPlayer: currentPlayer
 }

@@ -24,7 +24,10 @@ const onPlayCard = (socket, io) => {
 
 const onBegin = (socket, io) => {
   socket.on('REQUEST_BEGIN_GAME', (data) => {
-    io.in(data.gameCode).emit('BEGIN_GAME', {});
+    const code = data.gameCode;
+    dal.startGame(code);
+    const currentPlayer = dal.currentPlayer(code);
+    io.in(data.gameCode).emit('BEGIN_GAME', { currentPlayer });
   });
 };
 

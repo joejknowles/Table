@@ -27,7 +27,7 @@ export function* watchConnect(socket) {
   yield takeEvery('connect', setSocketId, socket);
 }
 
-export const socketEvents = [ 'PLAYER_ADDED', 'connect' ];
+export const socketEvents = [ 'PLAYER_ADDED', 'connect', 'BEGIN_GAME' ];
 
 export function* watchJoin(socket) {
   yield fork(watchConnect, socket);
