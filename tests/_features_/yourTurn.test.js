@@ -17,7 +17,7 @@ describe('Your turn', async () => {
       tableBrowser,
       players: [ player1Browser, player2Browser ]
     } = game);
-  });
+  }, 20000);
 
   it('shows button on first player browser', async () => {
     expect(
