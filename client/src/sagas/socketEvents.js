@@ -4,7 +4,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 export const createChannelForEvent = (socket, eventName) => {
   return eventChannel(emit => {
     socket.on(eventName, (data) => {
-      emit(data);
+      emit(data || {});
     });
     return () => socket.off();
   });

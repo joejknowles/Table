@@ -2,7 +2,9 @@ import {
   watchJoin,
   watchNewGame,
   watchPlayerJoin,
-  watchTableJoin
+  watchTableJoin,
+  watchConnect,
+  socketEvents
  } from '../../sagas';
 import { playerJoin } from '../../sagas/play';
 import { tableJoin } from '../../sagas/table';
@@ -16,9 +18,15 @@ const socket = jest.fn();
 describe('watchJoin', () => {
   const gen = watchJoin(socket);
 
+  it('forks watchConnect', () => {
+    expect(gen.next().value).toEqual(
+      fork(watchConnect, socket)
+    );
+  });
+
   it('forks watchAllSocketEvents', () => {
     expect(gen.next().value).toEqual(
-      fork(watchAllSocketEvents, socket, [ 'PLAYER_ADDED' ])
+      fork(watchAllSocketEvents, socket, socketEvents)
     );
   });
 
