@@ -12,7 +12,7 @@ describe('watchCards', () => {
   const socket = () => jest.fn();
   const gen = watchCards();
 
-  it('takes every event from channel to addCard', () => {
+  it('takes CARD_PLAYED to call addCard', () => {
     expect(gen.next().value).toEqual(
       takeEvery('CARD_PLAYED', addCard)
     );
