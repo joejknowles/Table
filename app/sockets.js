@@ -1,22 +1,23 @@
 const socketIo = require('socket.io');
 const cards = require('./game/cards');
-const games = [];
+const data = require('./game/data');
+const dal = require('./game/dal');
 
 const onJoin = (socket, io) => {
   socket.on('join', (data) => {
-    data = data || {};
-    const game = games.filter((game) => game.code === data.gameCode)[0];
+    const game = dal.getGame(data.gameCode);
     if (game) {
-      socket.join(game.code, () => {
-        if (data.clientType === 'PLAYER') game.playerCount++;
-        io.in(game.code).emit('PLAYER_ADDED', { game });
+      const code = game.code;
+      socket.join(code, () => {
+        if (data.clientType === 'PLAYER') dal.addPlayer(code, socket.id);
+        io.in(code).emit('PLAYER_ADDED', { game });
       });
     }
   });
 };
 
 const onPlayCard = (socket, io) => {
-  socket.on('PLAY_CARD', (data = {}) => {
+  socket.on('PLAY_CARD', (data) => {
     io.in(data.gameCode).emit('PLAY_CARD', cards.pop());
   });
 };
@@ -27,16 +28,9 @@ const onBegin = (socket, io) => {
   });
 };
 
-const createGame = () => ({
-  status: 0,
-  code: `${ Math.floor(Math.random()*90000) + 10000 }`,
-  playerCount: 0
-});
-
 const onNew = (socket, io) => {
   socket.on('REQUEST_NEW_GAME', (data) => {
-    const game = createGame();
-    games.push(game);
+    const game = dal.newGame();
     socket.join(game.code, () => {
       io.in(game.code).emit('NEW_GAME', game)
     });
