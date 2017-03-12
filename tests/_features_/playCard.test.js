@@ -9,7 +9,7 @@ describe('clicking the card on the players browser', async () => {
   let host;
 
   beforeAll(async () => {
-    const appStarter = await createAppStarter(5100);
+    const appStarter = await createAppStarter(5040);
     host = appStarter();
     game = await createGame(host.port, 1);
     ({ tableBrowser, players: [ playerBrowser ] } = game);
