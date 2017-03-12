@@ -1,15 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Layout from '../layout';
 import { tablePileTopCardSelector } from '../../reducers';
 
 export const Table = ({ topCard }) => (
-  <div className="pile">
-    { topCard ?
-      <div className="card">
-        { `${ topCard.rank } ${ topCard.suit }` }
-      </div> : null }
-  </div>
+  <Layout>
+    <div className="pile">
+      { topCard ?
+        <div className="card">
+          { `${ topCard.rank } ${ topCard.suit }` }
+        </div> : null }
+    </div>
+  </Layout>
 );
 
 const mapStateToProps = (state) => ({

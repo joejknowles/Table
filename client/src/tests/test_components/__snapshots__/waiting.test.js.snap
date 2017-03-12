@@ -1,6 +1,5 @@
 exports[`test component renders as before with 1 player 1`] = `
-<div
-  className="App">
+<Unknown>
   <p
     className="number-of-players">
     undefined players joined so far
@@ -19,12 +18,11 @@ exports[`test component renders as before with 1 player 1`] = `
     }
     className="begin-button"
     res="Begin Game" />
-</div>
+</Unknown>
 `;
 
 exports[`test component renders as before with 2 players 1`] = `
-<div
-  className="App">
+<Unknown>
   <p
     className="number-of-players">
     undefined players joined so far
@@ -43,12 +41,11 @@ exports[`test component renders as before with 2 players 1`] = `
     }
     className="begin-button"
     res="Begin Game" />
-</div>
+</Unknown>
 `;
 
 exports[`test component renders as before with no players 1`] = `
-<div
-  className="App">
+<Unknown>
   <p
     className="number-of-players">
     undefined players joined so far
@@ -67,5 +64,5 @@ exports[`test component renders as before with no players 1`] = `
     }
     className="begin-button"
     res="Begin Game" />
-</div>
+</Unknown>
 `;

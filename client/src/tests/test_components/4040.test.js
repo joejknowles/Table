@@ -1,4 +1,4 @@
-import Component from '../../components/404';
+import Component from '../../components/layout';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

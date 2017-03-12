@@ -1,16 +1,14 @@
 exports[`Play page renders as before with cards 1`] = `
-<div
-  className="App Play">
+<Unknown>
   <div
     className="pile">
     <Unknown />
   </div>
-</div>
+</Unknown>
 `;
 
 exports[`Play page renders as before without cards 1`] = `
-<div
-  className="App Play">
+<Unknown>
   <div
     className="pile">
     <p
@@ -18,12 +16,11 @@ exports[`Play page renders as before without cards 1`] = `
       No more cards
     </p>
   </div>
-</div>
+</Unknown>
 `;
 
 exports[`test Hand renders as before 1`] = `
-<div
-  className="App Play">
+<Unknown>
   <div
     className="pile">
     <p
@@ -31,12 +28,11 @@ exports[`test Hand renders as before 1`] = `
       No more cards
     </p>
   </div>
-</div>
+</Unknown>
 `;
 
 exports[`test PlayCardButton renders as before 1`] = `
-<div
-  className="App Play">
+<Unknown>
   <div
     className="pile">
     <p
@@ -44,5 +40,5 @@ exports[`test PlayCardButton renders as before 1`] = `
       No more cards
     </p>
   </div>
-</div>
+</Unknown>
 `;

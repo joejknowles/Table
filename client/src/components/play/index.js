@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Layout from '../layout'
 import Hand from './hand';
 import { handSelector } from '../../reducers';
-import '../../styles/Play.css';
 import res from '../../resources/pages/play';
 
 export class Play extends Component {
@@ -13,7 +13,7 @@ export class Play extends Component {
 
   render() {
     return (
-      <div className="App Play">
+      <Layout>
         <div className="pile">
           { this.props.hand > 0 ?
               <Hand /> :
@@ -22,7 +22,7 @@ export class Play extends Component {
               </p>
           }
         </div>
-      </div>
+      </Layout>
     );
   }
 }

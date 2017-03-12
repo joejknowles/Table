@@ -1,14 +1,18 @@
 exports[`test component renders as before with top card 1`] = `
-<div
-  className="pile">
+<Unknown>
   <div
-    className="card">
-    undefined undefined
+    className="pile">
+    <div
+      className="card">
+      undefined undefined
+    </div>
   </div>
-</div>
+</Unknown>
 `;
 
 exports[`test component renders as before without top card 1`] = `
-<div
-  className="pile" />
+<Unknown>
+  <div
+    className="pile" />
+</Unknown>
 `;

@@ -1,11 +1,13 @@
 import React from 'react';
+
+import Layout from '../layout'
 import JoinGame from './joinGame';
 import NewGame from './newGame';
 
 export default () => (
-  <div  className="App">
+  <Layout>
     <JoinGame />
     <hr />
     <NewGame />
-  </div>
+  </Layout>
 );
