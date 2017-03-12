@@ -10,4 +10,10 @@ describe('currentPlayer', () => {
       type: 'BEGIN_GAME', currentPlayer: 'test'
     })).toEqual('test');
   });
+
+  it('saves player id after card played is dispatched', () => {
+    expect(currentPlayer('other player', {
+      type: 'CARD_PLAYED', currentPlayer: 'test'
+    })).toEqual('test');
+  });
 });

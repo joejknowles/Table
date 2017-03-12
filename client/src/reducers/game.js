@@ -13,5 +13,12 @@ export const gameCode = (state = '', action) => {
   }
 };
 
-export const currentPlayer = (state = '', action) =>
-  action.type === 'BEGIN_GAME' ? action.currentPlayer : state;
+export const currentPlayer = (state = '', action) => {
+  switch (action.type) {
+    case 'BEGIN_GAME':
+    case 'CARD_PLAYED':
+      return action.currentPlayer;
+    default:
+      return state;
+  }
+};

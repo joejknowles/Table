@@ -1,8 +1,7 @@
-import createGame from './setup/users/fullGame';
-import createAppStarter from './setup/server';
-import res from '../../client/src/resources/pages/play';
+import createGame from '../setup/users/fullGame';
+import createAppStarter from '../setup/server';
 
-describe('Your turn', async () => {
+describe('on first turn', async () => {
   let tableBrowser;
   let player1Browser;
   let player2Browser;

@@ -18,7 +18,12 @@ const onJoin = (socket, io) => {
 
 const onPlayCard = (socket, io) => {
   socket.on('PLAY_CARD', (data) => {
-    io.in(data.gameCode).emit('PLAY_CARD', cards.pop());
+    const code = data.gameCode;
+    const currentPlayer = dal.nextTurn(code);
+    io.in(code).emit('CARD_PLAYED', {
+      card: cards.pop(),
+      currentPlayer: currentPlayer
+    });
   });
 };
 

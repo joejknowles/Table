@@ -30,6 +30,12 @@ const currentPlayer = (code) => {
   return game.players[game.turn];
 }
 
+const nextTurn = (code) => {
+  const game = getGame(code);
+  game.turn = ((game.turn + 1) % game.players.length);
+  return currentPlayer(code);
+};
+
 module.exports = {
   getGame: getGame,
   newGame: () => {
@@ -44,5 +50,6 @@ module.exports = {
     players[playerId] = createPlayer(playerId);
   },
   startGame: startGame,
-  currentPlayer: currentPlayer
+  currentPlayer: currentPlayer,
+  nextTurn: nextTurn
 }

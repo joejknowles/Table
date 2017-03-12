@@ -38,13 +38,12 @@ export default async (customPort) => {
   };
 
   const click = async (selector) => {
-    return await page.invokeMethod('evaluate', (selector) => {
+    const clickedElement = await page.invokeMethod('evaluate', (selector) => {
       const element = document.querySelector(selector);
-      if (!element) {
-        throw new Error('didn\'t find your element to click: ' + selector);
-      }
-      return element.click();
+      element.click();
+      return element;
     }, selector);
+    if (!clickedElement) throw new Error("couldn't find element: " + selector)
   };
 
   const currentPath = async () => (
