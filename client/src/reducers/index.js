@@ -41,3 +41,7 @@ export const tablePileTopCardSelector = (state) => (
 export const gameCodeSelector = (state) => state.gameCode;
 
 export const playerCountSelector = (state) => state.playerCount;
+
+export const currentPlayerSelector = (state) => state.currentPlayer;
+
+export const socketIdSelector = (state) => state.socketId;
