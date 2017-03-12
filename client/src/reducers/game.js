@@ -12,3 +12,6 @@ export const gameCode = (state = '', action) => {
       return state;
   }
 };
+
+export const currentPlayer = (state = '', action) =>
+  action.type === 'BEGIN_GAME' ? action.currentPlayer : state;
