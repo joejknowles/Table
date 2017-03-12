@@ -8,8 +8,7 @@ export const recheck = async(boolTest, testName = 'no name') => {
     if (result) {
       return result
     } else {
-      console.log('name: ', testName);
-      console.log('not working - trying again. attempt no.:', attempts);
+      console.log(`"${ testName }" attempt ${ attempts + 1 } unsuccessful - trying again.`);
       await sleep(2000);
       result = await boolTest();
     }
