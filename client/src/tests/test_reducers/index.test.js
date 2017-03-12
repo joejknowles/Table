@@ -1,4 +1,4 @@
-import { hand, tablePile, gameCode, clientType } from '../../reducers';
+import { hand, tablePile, gameCode, clientType, socketId } from '../../reducers';
 
 describe('hand reducer', () => {
   it('defaults to one', () => (
@@ -31,5 +31,15 @@ describe('client type', () => {
 
   it('becomes table', () => (
     expect(clientType('', { type: 'TABLE_JOIN' })).toEqual('TABLE')
+  ));
+});
+
+describe('socketId', () => {
+  it('defaults to empty string', () => (
+    expect(socketId(undefined, {})).toEqual('')
+  ));
+
+  it('can be set', () => (
+    expect(socketId('', { type: 'SET_SOCKET_ID', id: 'test' })).toEqual('test')
   ));
 });

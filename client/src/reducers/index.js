@@ -20,8 +20,12 @@ export const clientType = (state = '', action) => {
   }
 };
 
+export const socketId = (state = '', action) => (
+  action.type === 'SET_SOCKET_ID' ? action.id : state
+);
+
 export default combineReducers({
-  hand, tablePile, clientType, gameCode, playerCount
+  hand, tablePile, clientType, gameCode, playerCount, socketId
 });
 
 
