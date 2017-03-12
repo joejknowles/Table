@@ -1,8 +1,6 @@
 import { Play } from '../../../components/play';
 import PlayCardButton from '../../../components/play/playCardButton';
-import Hand from '../../../components/play/hand';
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import ReactTestUtils from 'react-addons-test-utils';
 const shallowRenderer = ReactTestUtils.createRenderer();
@@ -29,15 +27,6 @@ describe('Play page', () => {
     );
     expect(component).toMatchSnapshot();
   });
-});
-
-it('Hand renders as before', () => {
-  const component = shallowRenderer.render(
-    <Hand
-      ensureConnected= { ensureConnected }
-    />
-  );
-  expect(component).toMatchSnapshot();
 });
 
 it('PlayCardButton renders as before', () => {

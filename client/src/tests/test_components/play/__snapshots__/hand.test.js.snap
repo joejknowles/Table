@@ -1,0 +1,11 @@
+exports[`test Hand renders as before not on turn 1`] = `
+<div
+  className="card" />
+`;
+
+exports[`test Hand renders as before on turn 1`] = `
+<div
+  className="card">
+  <Unknown />
+</div>
+`;

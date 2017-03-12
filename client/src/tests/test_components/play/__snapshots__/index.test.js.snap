@@ -2,24 +2,12 @@ exports[`Play page renders as before with cards 1`] = `
 <Unknown>
   <div
     className="pile">
-    <Unknown />
+    <Connect(Component) />
   </div>
 </Unknown>
 `;
 
 exports[`Play page renders as before without cards 1`] = `
-<Unknown>
-  <div
-    className="pile">
-    <p
-      className="no-cards-message">
-      No more cards
-    </p>
-  </div>
-</Unknown>
-`;
-
-exports[`test Hand renders as before 1`] = `
 <Unknown>
   <div
     className="pile">
