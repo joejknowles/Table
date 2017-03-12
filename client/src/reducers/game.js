@@ -18,6 +18,8 @@ export const currentPlayer = (state = '', action) => {
     case 'BEGIN_GAME':
     case 'CARD_PLAYED':
       return action.currentPlayer;
+    case 'PLAY_CARD':
+      return '';
     default:
       return state;
   }

@@ -16,4 +16,10 @@ describe('currentPlayer', () => {
       type: 'CARD_PLAYED', currentPlayer: 'test'
     })).toEqual('test');
   });
+
+  it('resets to blank after PLAY_CARD is dispatched', () => {
+    expect(currentPlayer('ME', {
+      type: 'PLAY_CARD'
+    })).toEqual('');
+  });
 });
