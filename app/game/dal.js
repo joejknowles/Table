@@ -30,6 +30,7 @@ const startGame = (code) => {
   const piles = deal(cards, game.players.length);
   game.players.forEach((player, index) => game.piles[player] = piles[index]);
   game.piles['TABLE'] = [];
+  return game.piles;
 }
 
 const currentPlayer = (code) => {

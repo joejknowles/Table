@@ -1,6 +1,6 @@
 import {
-  watchBegin, createBeginGameChannel,
-  requestBeginGame, beginGame
+  watchBegin,
+  requestBeginGame
 } from '../../sagas/beginGame';
 
 import { call, takeEvery } from 'redux-saga/effects';

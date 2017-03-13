@@ -3,9 +3,9 @@ const dal = require('./dal');
 const newGame = () => dal.newGame();
 
 const begin = (gameCode) => {
-  dal.startGame(gameCode);
+  const piles = dal.startGame(gameCode);
   const currentPlayer = dal.currentPlayer(gameCode);
-  return { currentPlayer };
+  return { currentPlayer, piles };
 };
 
 const addClient = ({gameCode, clientType, socketId}) => {

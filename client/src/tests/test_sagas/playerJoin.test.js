@@ -1,12 +1,13 @@
 import { playerJoin, playerBegin, playCard } from '../../sagas/play';
 
-import { call, takeEvery } from 'redux-saga/effects';
+import { call, takeEvery, put } from 'redux-saga/effects';
 
 import * as toPath from '../../routing';
 import createWebSocketConnection, * as events from '../../api/sockets';
 
 const socket = {
-  emit: jest.fn()
+  emit: jest.fn(),
+  id: 'test'
 }
 
 describe('playerJoin', () => {
@@ -37,8 +38,20 @@ describe('playerJoin', () => {
   });
 });
 
+const action = {
+  piles: {
+    'test': [1, 2, 3]
+  }
+}
+
 describe('playerBegin', () => {
-  const gen = playerBegin(socket);
+  const gen = playerBegin(socket, action);
+
+  it('dispatches SET_CARD_COUNT', () => {
+    expect(gen.next().value).toEqual(
+      put({ type: 'SET_CARD_COUNT', cardCount: 3})
+    );
+  });
 
   it('takes every PLAY_CARD', () => {
     expect(gen.next().value).toEqual(

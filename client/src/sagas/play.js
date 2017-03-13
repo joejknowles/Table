@@ -1,4 +1,4 @@
-import { call, takeEvery, select } from 'redux-saga/effects';
+import { call, takeEvery, select, put } from 'redux-saga/effects';
 
 import * as toPath from '../routing';
 import { gameCodeSelector } from '../reducers';
@@ -9,7 +9,9 @@ export function* playCard(socket) {
   yield call([socket, socket.emit], 'PLAY_CARD', { gameCode });
 }
 
-export function* playerBegin(socket) {
+export function* playerBegin(socket, action) {
+  const cardCount = action.piles[socket.id].length;
+  yield put({ type: 'SET_CARD_COUNT', cardCount })
   yield takeEvery('PLAY_CARD', playCard, socket);
   yield call(toPath.play);
 }

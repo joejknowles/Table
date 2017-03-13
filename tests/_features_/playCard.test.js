@@ -1,6 +1,9 @@
 import createGame from './setup/users/fullGame';
 import createAppStarter from './setup/server';
 import res from '../../client/src/resources/pages/play';
+jest.mock('../../app/game/cardSpecies', () => [
+  { id: 3 }
+]);
 
 describe('clicking the card on the players browser', async () => {
   let tableBrowser;
