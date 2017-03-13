@@ -1,5 +1,6 @@
 const gameStatus = require('../../client/src/shared/constants/gameStatus');
 const data = require('./data');
+const deal = require('./deal');
 const cards = require('./cardSpecies');
 const gamesByCode = data.gamesByCode;
 const players = data.players;
@@ -9,7 +10,7 @@ const createGame = () => ({
   code: `${ Math.floor(Math.random()*90000) + 10000 }`,
   playerCount: 0,
   players: [],
-  pilesByOwner: {},
+  piles: {},
   turn: 0
 });
 
@@ -24,7 +25,11 @@ const getGame = (code) => {
 }
 
 const startGame = (code) => {
-  getGame(code).status = gameStatus.ongoing;
+  const game = getGame(code);
+  game.status = gameStatus.ongoing;
+  const piles = deal(cards, game.players.length);
+  game.players.forEach((player, index) => game.piles[player] = piles[index]);
+  game.piles['TABLE'] = [];
 }
 
 const currentPlayer = (code) => {
@@ -38,9 +43,12 @@ const setNextPlayer = (code) => {
   return currentPlayer(code);
 };
 
-const moveNextCard = (code) => { // TODO:: deal real cards
-  return cards.pop();
-}
+const moveNextCard = (code) => {
+  const game = getGame(code);
+  const nextCard = game.piles[currentPlayer(code)].pop();
+  game.piles['TABLE'].push(nextCard);
+  return nextCard;
+};
 
 module.exports = {
   getGame: getGame,
