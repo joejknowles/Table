@@ -1,16 +1,14 @@
 const socketIo = require('socket.io');
-const cards = require('./game/cards');
-const data = require('./game/data');
 const dal = require('./game/dal');
+const gamePlay = require('./game/index');
 
 const onJoin = (socket, io) => {
   socket.on('join', (data) => {
-    const game = dal.getGame(data.gameCode);
-    if (game) {
-      const code = game.code;
+    const response = gamePlay.addClient(data, socket.id);
+    if (response) {
+      const code = response.code;
       socket.join(code, () => {
-        if (data.clientType === 'PLAYER') dal.addPlayer(code, socket.id);
-        io.in(code).emit('PLAYER_ADDED', { game });
+        io.in(code).emit('PLAYER_ADDED', { game: response });
       });
     }
   });
@@ -19,11 +17,8 @@ const onJoin = (socket, io) => {
 const onPlayCard = (socket, io) => {
   socket.on('PLAY_CARD', (data) => {
     const code = data.gameCode;
-    const currentPlayer = dal.nextTurn(code);
-    io.in(code).emit('CARD_PLAYED', {
-      card: cards.pop(),
-      currentPlayer: currentPlayer
-    });
+    const response = gamePlay.playCard(code);
+    io.in(code).emit('CARD_PLAYED', response);
   });
 };
 

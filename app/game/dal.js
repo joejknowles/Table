@@ -1,5 +1,6 @@
 const gameStatus = require('../../client/src/shared/constants/gameStatus');
 const data = require('./data');
+const cards = require('./cardSpecies');
 const gamesByCode = data.gamesByCode;
 const players = data.players;
 
@@ -8,6 +9,7 @@ const createGame = () => ({
   code: `${ Math.floor(Math.random()*90000) + 10000 }`,
   playerCount: 0,
   players: [],
+  pilesByOwner: {},
   turn: 0
 });
 
@@ -30,11 +32,15 @@ const currentPlayer = (code) => {
   return game.players[game.turn];
 }
 
-const nextTurn = (code) => {
+const setNextPlayer = (code) => {
   const game = getGame(code);
   game.turn = ((game.turn + 1) % game.players.length);
   return currentPlayer(code);
 };
+
+const moveNextCard = (code) => { // TODO:: deal real cards
+  return cards.pop();
+}
 
 module.exports = {
   getGame: getGame,
@@ -49,7 +55,8 @@ module.exports = {
     game.players.push(playerId);
     players[playerId] = createPlayer(playerId);
   },
-  startGame: startGame,
-  currentPlayer: currentPlayer,
-  nextTurn: nextTurn
+  startGame,
+  currentPlayer,
+  setNextPlayer,
+  moveNextCard
 }
