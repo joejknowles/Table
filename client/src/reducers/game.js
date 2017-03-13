@@ -1,5 +1,5 @@
 export const playerCount = (state = 0, action) =>
-  action.type === 'PLAYER_ADDED' ? action.game.playerCount : state;
+  action.type === 'PLAYER_ADDED' ? action.playerCount || state : state;
 
 export const gameCode = (state = '', action) => {
   switch (action.type) {

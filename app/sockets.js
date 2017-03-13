@@ -22,11 +22,11 @@ const onJoin = (socket, io) => {
   socket.on('join', (request) => {
     const { gameCode, clientType } = request;
     const response = gameplay.addClient({
-      code: gameCode, clientType, socketId: socket.id
+      gameCode, clientType, socketId: socket.id
     });
     if (response) {
       socket.join(gameCode, () => {
-        io.in(gameCode).emit('PLAYER_ADDED', { game: response });
+        io.in(gameCode).emit('PLAYER_ADDED', response);
       });
     }
   });
