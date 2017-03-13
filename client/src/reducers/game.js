@@ -17,7 +17,7 @@ export const currentPlayer = (state = '', action) => {
   switch (action.type) {
     case 'BEGIN_GAME':
     case 'CARD_PLAYED':
-      return action.currentPlayer;
+      return action.currentPlayer || '';
     case 'PLAY_CARD':
       return '';
     default:
