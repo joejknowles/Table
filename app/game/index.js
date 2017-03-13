@@ -1,9 +1,20 @@
 const dal = require('./dal');
 
-const addClient = ({code, clientType, socketId}) => {
-  const game = dal.getGame(code);
-  if (clientType === 'PLAYER' && game) dal.addPlayer(code, socketId);
-  return game;
+const newGame = () => dal.newGame();
+
+const begin = (gameCode) => {
+  dal.startGame(gameCode);
+  const currentPlayer = dal.currentPlayer(gameCode);
+  return { currentPlayer };
+};
+
+const addClient = ({gameCode, clientType, socketId}) => {
+  const game = dal.getGame(gameCode);
+  if (!game) return {};
+  if (clientType === 'PLAYER') dal.addPlayer(gameCode, socketId);
+  return {
+    playerCount: game.playerCount
+  };
 };
 
 const playCard = (gameCode) => {
@@ -13,14 +24,6 @@ const playCard = (gameCode) => {
     card, currentPlayer
   };
 };
-
-const begin = (gameCode) => {
-  dal.startGame(gameCode);
-  const currentPlayer = dal.currentPlayer(gameCode);
-  return { currentPlayer };
-};
-
-const newGame = () => dal.newGame();
 
 const gameplay = {
   newGame, begin,

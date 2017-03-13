@@ -1,6 +1,23 @@
 const socketIo = require('socket.io');
 const gameplay = require('./game/index');
 
+const onNew = (socket, io) => {
+  socket.on('REQUEST_NEW_GAME', () => {
+    const game = gameplay.newGame();
+    socket.join(game.code, () => {
+      io.in(game.code).emit('NEW_GAME', game)
+    });
+  });
+};
+
+const onBegin = (socket, io) => {
+  socket.on('REQUEST_BEGIN_GAME', (request) => {
+    const { gameCode } = request;
+    const response = gameplay.begin(gameCode);
+    io.in(gameCode).emit('BEGIN_GAME', response);
+  });
+};
+
 const onJoin = (socket, io) => {
   socket.on('join', (request) => {
     const { gameCode, clientType } = request;
@@ -20,23 +37,6 @@ const onPlayCard = (socket, io) => {
     const { gameCode } = request;
     const response = gameplay.playCard(gameCode);
     io.in(gameCode).emit('CARD_PLAYED', response);
-  });
-};
-
-const onBegin = (socket, io) => {
-  socket.on('REQUEST_BEGIN_GAME', (request) => {
-    const { gameCode } = request;
-    const response = gameplay.begin(gameCode);
-    io.in(gameCode).emit('BEGIN_GAME', response);
-  });
-};
-
-const onNew = (socket, io) => {
-  socket.on('REQUEST_NEW_GAME', () => {
-    const game = gameplay.newGame();
-    socket.join(game.code, () => {
-      io.in(game.code).emit('NEW_GAME', game)
-    });
   });
 };
 
