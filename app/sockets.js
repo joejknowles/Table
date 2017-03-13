@@ -1,39 +1,39 @@
 const socketIo = require('socket.io');
-const dal = require('./game/dal');
-const gamePlay = require('./game/index');
+const gameplay = require('./game/index');
 
 const onJoin = (socket, io) => {
-  socket.on('join', (data) => {
-    const response = gamePlay.addClient(data, socket.id);
+  socket.on('join', (request) => {
+    const { gameCode, clientType } = request;
+    const response = gameplay.addClient({
+      code: gameCode, clientType, socketId: socket.id
+    });
     if (response) {
-      const code = response.code;
-      socket.join(code, () => {
-        io.in(code).emit('PLAYER_ADDED', { game: response });
+      socket.join(gameCode, () => {
+        io.in(gameCode).emit('PLAYER_ADDED', { game: response });
       });
     }
   });
 };
 
 const onPlayCard = (socket, io) => {
-  socket.on('PLAY_CARD', (data) => {
-    const code = data.gameCode;
-    const response = gamePlay.playCard(code);
-    io.in(code).emit('CARD_PLAYED', response);
+  socket.on('PLAY_CARD', (request) => {
+    const { gameCode } = request;
+    const response = gameplay.playCard(gameCode);
+    io.in(gameCode).emit('CARD_PLAYED', response);
   });
 };
 
 const onBegin = (socket, io) => {
-  socket.on('REQUEST_BEGIN_GAME', (data) => {
-    const code = data.gameCode;
-    dal.startGame(code);
-    const currentPlayer = dal.currentPlayer(code);
-    io.in(data.gameCode).emit('BEGIN_GAME', { currentPlayer });
+  socket.on('REQUEST_BEGIN_GAME', (request) => {
+    const { gameCode } = request;
+    const response = gameplay.begin(gameCode);
+    io.in(gameCode).emit('BEGIN_GAME', response);
   });
 };
 
 const onNew = (socket, io) => {
-  socket.on('REQUEST_NEW_GAME', (data) => {
-    const game = dal.newGame();
+  socket.on('REQUEST_NEW_GAME', () => {
+    const game = gameplay.newGame();
     socket.join(game.code, () => {
       io.in(game.code).emit('NEW_GAME', game)
     });

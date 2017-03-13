@@ -1,8 +1,8 @@
 const dal = require('./dal');
 
-const addClient = (data, socketId) => { // try destructuring variables
-  const game = dal.getGame(data.gameCode);
-  if (data.clientType === 'PLAYER' && game) dal.addPlayer(game.code, socketId);
+const addClient = ({code, clientType, socketId}) => {
+  const game = dal.getGame(code);
+  if (clientType === 'PLAYER' && game) dal.addPlayer(code, socketId);
   return game;
 };
 
@@ -12,11 +12,20 @@ const playCard = (gameCode) => {
   return {
     card, currentPlayer
   };
-}
+};
 
-const commands = {
+const begin = (gameCode) => {
+  dal.startGame(gameCode);
+  const currentPlayer = dal.currentPlayer(gameCode);
+  return { currentPlayer };
+};
+
+const newGame = () => dal.newGame();
+
+const gameplay = {
+  newGame, begin,
   addClient,
   playCard
 };
 
- module.exports = commands;
+ module.exports = gameplay;
