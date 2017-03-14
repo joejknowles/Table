@@ -15,7 +15,7 @@ describe('correct cards get played when 3 cards', async () => {
   let host;
 
   beforeAll(async () => {
-    const appStarter = await createAppStarter(5060);
+    const appStarter = await createAppStarter(5080);
     host = appStarter();
     game = await createGame(host.port, 2);
     ({
