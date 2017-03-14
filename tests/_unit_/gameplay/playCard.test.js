@@ -1,6 +1,6 @@
-import { playCard } from '../../app/game';
-import dal from '../../app/game/dal';
-jest.mock('../../app/game/dal', () => ({
+import { playCard } from '../../../app/game';
+import dal from '../../../app/game/dal';
+jest.mock('../../../app/game/dal', () => ({
   moveNextCard: jest.fn(() => 'card'),
   setNextPlayer: jest.fn(() => 'player')
 }));

@@ -10,7 +10,7 @@ const createGame = () => ({
   code: `${ Math.floor(Math.random()*90000) + 10000 }`,
   playerCount: 0,
   players: [],
-  piles: {},
+  piles: { 'TABLE': [] },
   turn: 0
 });
 
@@ -29,7 +29,6 @@ const startGame = (code) => {
   game.status = gameStatus.ongoing;
   const piles = deal(cards, game.players.length);
   game.players.forEach((player, index) => game.piles[player] = piles[index]);
-  game.piles['TABLE'] = [];
   return game.piles;
 }
 
@@ -51,6 +50,14 @@ const moveNextCard = (code) => {
   return nextCard;
 };
 
+const getLastTableCards = (code) => {
+  const game = getGame(code);
+  const tableCards = game.piles['TABLE'];
+  return tableCards.slice(tableCards.length - 2);
+}
+
+const movePile = (from, to) => {};
+
 module.exports = {
   getGame: getGame,
   newGame: () => {
@@ -67,5 +74,7 @@ module.exports = {
   startGame,
   currentPlayer,
   setNextPlayer,
-  moveNextCard
+  moveNextCard,
+  getLastTableCards,
+  movePile
 }

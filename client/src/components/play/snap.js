@@ -6,6 +6,6 @@ export default ({ dispatch }) => (
   <DispatchButton
     res={ res.snap }
     className='snap'
-    action={ { type: 'TRY_SNAP' } }
+    action={ { type: 'SNAP' } }
   />
 );

@@ -1,4 +1,4 @@
-import { playerJoin, playerBegin, playCard } from '../../sagas/play';
+import { playerJoin, playerBegin, playCard, emitGameAction } from '../../sagas/play';
 
 import { call, takeEvery, put } from 'redux-saga/effects';
 
@@ -55,13 +55,19 @@ describe('playerBegin', () => {
 
   it('takes every PLAY_CARD', () => {
     expect(gen.next().value).toEqual(
-      takeEvery('PLAY_CARD', playCard, socket)
+      takeEvery('PLAY_CARD', emitGameAction, socket)
     );
   });
 
-  it('goes to table path', () => {
+  it('goes to player path', () => {
     expect(gen.next().value).toEqual(
       call(toPath.play)
+    );
+  });
+
+  it('takes every SNAP action', () => {
+    expect(gen.next().value).toEqual(
+      takeEvery('SNAP', emitGameAction, socket)
     );
   });
 });

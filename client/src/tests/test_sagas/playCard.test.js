@@ -1,4 +1,4 @@
-import { playCard } from '../../sagas/play';
+import { emitGameAction } from '../../sagas/play';
 
 import { gameCodeSelector } from '../../reducers';
 import { select, call } from 'redux-saga/effects';
@@ -7,8 +7,8 @@ const socket = {
   emit: jest.fn()
 };
 
-describe('playCard', () => {
-  const gen = playCard(socket);
+describe('emitGameAction', () => {
+  const gen = emitGameAction(socket, { type: 'PLAY_CARD'});
   it('selects game code from store', () => {
     expect(gen.next().value).toEqual(
       select(gameCodeSelector)

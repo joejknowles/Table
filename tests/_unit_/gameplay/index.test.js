@@ -1,6 +1,6 @@
-import { newGame, begin, addClient, playCard } from '../../app/game';
-import dal from '../../app/game/dal';
-jest.mock('../../app/game/dal', () => ({
+import { newGame, begin, addClient, playCard } from '../../../app/game';
+import dal from '../../../app/game/dal';
+jest.mock('../../../app/game/dal', () => ({
   newGame: jest.fn(),
   startGame: jest.fn(),
   currentPlayer: jest.fn(() => 'currentPlayer'),

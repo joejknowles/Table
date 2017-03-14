@@ -1,0 +1,10 @@
+exports[`test PlayCardButton renders as before 1`] = `
+<Connect(Component)
+  action={
+    Object {
+      "type": "PLAY_CARD",
+    }
+  }
+  className="play-card"
+  res="Play Card" />
+`;

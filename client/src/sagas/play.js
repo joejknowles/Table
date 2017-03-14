@@ -4,16 +4,17 @@ import * as toPath from '../routing';
 import { gameCodeSelector } from '../reducers';
 import * as events from '../api/sockets';
 
-export function* playCard(socket) {
+export function* emitGameAction(socket, action) {
   const gameCode = yield select(gameCodeSelector);
-  yield call([socket, socket.emit], 'PLAY_CARD', { gameCode });
+  yield call([socket, socket.emit], action.type, { gameCode });
 }
 
 export function* playerBegin(socket, action) {
   const cardCount = action.piles[socket.id].length;
   yield put({ type: 'SET_CARD_COUNT', cardCount })
-  yield takeEvery('PLAY_CARD', playCard, socket);
+  yield takeEvery('PLAY_CARD', emitGameAction, socket);
   yield call(toPath.play);
+  yield takeEvery('SNAP', emitGameAction, socket)
 }
 
 export function* playerJoin(socket, action) {

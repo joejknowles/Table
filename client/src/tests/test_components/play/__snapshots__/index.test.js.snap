@@ -4,17 +4,3 @@ exports[`Play page renders as before 1`] = `
   <Unknown />
 </Unknown>
 `;
-
-exports[`test PlayCardButton renders as before 1`] = `
-<Unknown>
-  <Connect(Component) />
-  <Unknown />
-</Unknown>
-`;
-
-exports[`test Snap renders as before 1`] = `
-<Unknown>
-  <Connect(Component) />
-  <Unknown />
-</Unknown>
-`;

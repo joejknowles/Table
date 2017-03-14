@@ -28,7 +28,7 @@ export function* watchConnect(socket) {
 }
 
 export const socketEvents = [
-  'PLAYER_ADDED', 'connect', 'BEGIN_GAME', 'CARD_PLAYED'
+  'connect', 'PLAYER_ADDED', 'BEGIN_GAME', 'CARD_PLAYED', 'SNAP_RESULT'
 ];
 
 export function* watchJoin(socket) {

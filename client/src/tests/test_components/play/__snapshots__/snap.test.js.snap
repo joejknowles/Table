@@ -1,0 +1,10 @@
+exports[`test Snap renders as before 1`] = `
+<Connect(Component)
+  action={
+    Object {
+      "type": "SNAP",
+    }
+  }
+  className="snap"
+  res={undefined} />
+`;

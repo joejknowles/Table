@@ -1,5 +1,5 @@
-const socketIo = require('socket.io');
-const gameplay = require('./game/index');
+const gameplay = require('../../game/index');
+const snap = require('./snap');
 
 const onNew = (socket, io) => {
   socket.on('REQUEST_NEW_GAME', () => {
@@ -40,17 +40,14 @@ const onPlayCard = (socket, io) => {
   });
 };
 
-module.exports = {
-  addHandlers: (io) => {
-    io.on('connection', function(socket) {
-      onJoin(socket, io);
-      onBegin(socket, io);
-      onPlayCard(socket, io);
-      onNew(socket, io);
-    });
-  },
-  connectSockets: (server) => {
-    const io = socketIo(server);
-    module.exports.addHandlers(io);
-  }
+const addListeners = (io) => {
+  io.on('connection', function(socket) {
+    onJoin(socket, io);
+    onBegin(socket, io);
+    onPlayCard(socket, io);
+    onNew(socket, io);
+    snap(socket, io);
+  });
 };
+
+module.exports = addListeners;
