@@ -7,7 +7,7 @@ module.exports = (deck, playerCount) => {
     piles.push([]);
   }
   let pileId = 0;
-  deck.forEach((card) => {
+  shuffledDeck.forEach((card) => {
     piles[pileId].push(card);
     pileId++;
     if (pileId >= playerCount) pileId = 0;

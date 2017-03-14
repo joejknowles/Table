@@ -12,7 +12,7 @@ for (let suitNo = 0; suitNo < 4; suitNo++) {
   const suit = suits[suitNo];
   for (let rankNo = 1; rankNo < 14; rankNo++) {
     let rank;
-    if (isPictureCard(pictureRanks)) {
+    if (isPictureCard(rankNo)) {
       rank = pictureRanks[rankNo];
     } else {
       rank = rankNo.toString();
@@ -25,5 +25,4 @@ for (let suitNo = 0; suitNo < 4; suitNo++) {
     deck.push(card);
   }
 }
-
 module.exports = deck;
