@@ -6,8 +6,12 @@ const createPlayerMoves = (playerBrowser) => {
   const playCard = async () => (
     await playerBrowser.click('.play-card')
   );
+  const snap = async () => (
+    await playerBrowser.click('.snap')
+  );
   return {
     playCard,
+    snap,
     ...createSharedMoves(playerBrowser)
   };
 }
