@@ -1,17 +1,20 @@
 exports[`Play page renders as before with cards 1`] = `
 <Unknown>
   <Connect(Component) />
+  <Unknown />
 </Unknown>
 `;
 
 exports[`Play page renders as before without cards 1`] = `
 <Unknown>
   <Connect(Component) />
+  <Unknown />
 </Unknown>
 `;
 
 exports[`test PlayCardButton renders as before 1`] = `
 <Unknown>
   <Connect(Component) />
+  <Unknown />
 </Unknown>
 `;
