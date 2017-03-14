@@ -1,32 +1,17 @@
 exports[`Play page renders as before with cards 1`] = `
 <Unknown>
-  <div
-    className="pile">
-    <Connect(Component) />
-  </div>
+  <Connect(Component) />
 </Unknown>
 `;
 
 exports[`Play page renders as before without cards 1`] = `
 <Unknown>
-  <div
-    className="pile">
-    <p
-      className="no-cards-message">
-      No more cards
-    </p>
-  </div>
+  <Connect(Component) />
 </Unknown>
 `;
 
 exports[`test PlayCardButton renders as before 1`] = `
 <Unknown>
-  <div
-    className="pile">
-    <p
-      className="no-cards-message">
-      No more cards
-    </p>
-  </div>
+  <Connect(Component) />
 </Unknown>
 `;

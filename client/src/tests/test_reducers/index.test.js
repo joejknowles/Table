@@ -1,16 +1,16 @@
-import { hand, tablePile, gameCode, clientType, socketId } from '../../reducers';
+import { cardCount, tablePile, gameCode, clientType, socketId } from '../../reducers';
 
-describe('hand reducer', () => {
+describe('cardCount reducer', () => {
   it('defaults to one', () => (
-    expect(hand(undefined, {})).toBe(1)
+    expect(cardCount(undefined, {})).toBe(1)
   ));
 
   it('updates on SET_CARD_COUNT', () => (
-    expect(hand(1, {type: 'SET_CARD_COUNT', cardCount: 10})).toBe(10)
+    expect(cardCount(1, {type: 'SET_CARD_COUNT', cardCount: 10})).toBe(10)
   ));
 
   it('decreases by 1 after PLAY_CARD', () => (
-    expect(hand(1, { type: 'PLAY_CARD'})).toBe(0)
+    expect(cardCount(1, { type: 'PLAY_CARD'})).toBe(0)
   ));
 });
 
