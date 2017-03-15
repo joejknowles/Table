@@ -13,6 +13,9 @@ exports[`test component renders as before with top card 1`] = `
 exports[`test component renders as before without top card 1`] = `
 <Unknown>
   <div
-    className="pile" />
+    className="pile">
+    <div
+      className="noCards" />
+  </div>
 </Unknown>
 `;

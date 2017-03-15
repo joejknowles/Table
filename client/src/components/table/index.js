@@ -10,7 +10,7 @@ export const Table = ({ topCard }) => (
       { topCard ?
         <div className="card">
           { `${ topCard.rank } ${ topCard.suit }` }
-        </div> : null }
+        </div> : <div className="noCards" /> }
     </div>
   </Layout>
 );
