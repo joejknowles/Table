@@ -37,9 +37,13 @@ const currentPlayer = (code) => {
   return game.players[game.turn];
 }
 
-const setNextPlayer = (code) => {
+const setNextPlayer = (code, playerId) => {
   const game = getGame(code);
-  game.turn = ((game.turn + 1) % game.players.length);
+  if (playerId) {
+    game.turn = game.players.indexOf(playerId);
+  } else {
+    game.turn = ((game.turn + 1) % game.players.length);
+  }
   return currentPlayer(code);
 };
 

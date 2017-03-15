@@ -7,15 +7,16 @@ const cardsMatch = (gameCode) => {
 
 const snap = (gameCode, playerId) => {
   const snapped = cardsMatch(gameCode);
-  let newCardCount;
+  let newCardCount, currentPlayer;
   if (snapped) {
-    dal.setNextPlayer(gameCode, playerId);
+    currentPlayer = dal.setNextPlayer(gameCode, playerId);
     newCardCount = dal.movePile(gameCode, 'TABLE', playerId)
   }
   return {
     snapped,
     snapBy: playerId,
-    newCardCount
+    newCardCount,
+    currentPlayer
   }
 }
 

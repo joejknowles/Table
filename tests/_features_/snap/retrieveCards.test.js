@@ -44,6 +44,12 @@ describe('snapping', async () => {
     ).toBe(true);
   }, 15000);
 
+  it('1st player goes again after collecting cards', async () => {
+    expect(
+      await player1Browser.hasElement('.play-card')
+    ).toBe(true);
+  });
+
   afterAll(() => {
     game.exit();
     host.server.close();
