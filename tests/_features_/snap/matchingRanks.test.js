@@ -48,6 +48,12 @@ describe('snapping', async () => {
     ).toBe(true);
   });
 
+  it('table cards disappear', async () => {
+    expect(
+      await tableBrowser.hasElement('.noCards')
+    ).toBe(true);
+  });
+
   afterAll(() => {
     game.exit();
     host.server.close();
