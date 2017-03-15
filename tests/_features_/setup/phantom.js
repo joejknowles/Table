@@ -34,7 +34,7 @@ export default async (customPort) => {
     return await recheck(async () => {
       const element = await find(selector);
       return !(element.className !== undefined && element.className.length > 0);
-    });
+    }, `testing absence of ${ selector }`);
   };
 
   const click = async (selector) => {

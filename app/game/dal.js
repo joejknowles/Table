@@ -29,6 +29,7 @@ const startGame = (code) => {
   game.status = gameStatus.ongoing;
   const piles = deal(cards, game.players.length);
   game.players.forEach((player, index) => game.piles[player] = piles[index]);
+  console.log(game.piles);
   return game.piles;
 }
 
@@ -53,10 +54,18 @@ const moveNextCard = (code) => {
 const getLastTableCards = (code) => {
   const game = getGame(code);
   const tableCards = game.piles['TABLE'];
+  console.log(game.piles);
   return tableCards.slice(tableCards.length - 2);
 }
 
-const movePile = (from, to) => {};
+const movePile = (gameCode, from, to) => {
+  const game = getGame(gameCode);
+  const movingCards = game.piles[from];
+  game.piles[to] = movingCards.reverse().concat(game.piles[to]);
+  game.piles[from] = [];
+  console.log(to);
+  return game.piles[to].length;
+};
 
 module.exports = {
   getGame: getGame,

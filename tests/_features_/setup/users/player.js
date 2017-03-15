@@ -1,14 +1,16 @@
 import createBrowser from '../phantom';
 import { createSharedMoves } from './moves';
+import { sleep } from '../asyncHelpers';
 import paths from '../../../../client/src/shared/paths';
 
 const createPlayerMoves = (playerBrowser) => {
   const playCard = async () => (
     await playerBrowser.click('.play-card')
   );
-  const snap = async () => (
-    await playerBrowser.click('.snap')
-  );
+  const snap = async () => {
+    await sleep(2000);
+    return await playerBrowser.click('.snap');
+  };
   return {
     playCard,
     snap,

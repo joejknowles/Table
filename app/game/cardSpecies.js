@@ -28,10 +28,10 @@ for (let suitNo = 0; suitNo < 4; suitNo++) {
 
 const allSnapsDeck = [
   {id: 1, suit: 'HEARTS', rank: 'A'},
-  {id: 1, suit: 'HEARTS', rank: 'A'},
-  {id: 1, suit: 'HEARTS', rank: 'A'},
-  {id: 1, suit: 'HEARTS', rank: 'A'},
-  {id: 1, suit: 'HEARTS', rank: 'A'},
+  {id: 2, suit: 'HEARTS', rank: 'A'},
+  {id: 3, suit: 'HEARTS', rank: 'A'},
+  {id: 4, suit: 'HEARTS', rank: 'A'},
+  {id: 5, suit: 'HEARTS', rank: 'A'},
 ]
 
 //module.exports = allSnapsDeck;
