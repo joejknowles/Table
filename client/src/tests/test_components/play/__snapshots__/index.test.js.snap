@@ -1,6 +1,7 @@
 exports[`Play page renders as before 1`] = `
 <Unknown>
   <Connect(Component) />
+  <Connect(Component) />
   <Unknown />
 </Unknown>
 `;

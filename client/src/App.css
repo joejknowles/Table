@@ -16,6 +16,12 @@
   }
 }
 
+.card-count {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+}
+
 .card, .noCards {
   width: 100%;
   height: 100%;

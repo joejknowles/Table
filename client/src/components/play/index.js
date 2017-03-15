@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Layout from '../layout'
 import Hand from './hand';
 import Snap from './snap';
+import CardCount from './cardCount';
 
 export class Play extends Component {
   componentWillMount() {
@@ -13,6 +14,7 @@ export class Play extends Component {
   render() {
     return (
       <Layout>
+        <CardCount />
         <Hand />
         <Snap />
       </Layout>
