@@ -40,9 +40,6 @@ describe('snapping', async () => {
   it('cards return after snapping', async () => {
     await player1Browser.snap();
     expect(
-      await player1Browser.containsText(playRes.youWin)
-    ).toBe(true);
-    expect(
       await player1Browser.hasElement('.card')
     ).toBe(true);
   }, 15000);
