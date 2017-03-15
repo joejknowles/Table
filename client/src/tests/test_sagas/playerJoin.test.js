@@ -4,6 +4,7 @@ import { snapResponse } from '../../sagas/snapResponse';
 import { call, takeEvery, put } from 'redux-saga/effects';
 
 import * as toPath from '../../routing';
+import { itEnds } from './common';
 import createWebSocketConnection, * as events from '../../api/sockets';
 
 const socket = {
@@ -32,11 +33,7 @@ describe('playerJoin', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  itEnds(gen);
 });
 
 const action = {
@@ -78,9 +75,5 @@ describe('playerBegin', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  })
+  itEnds(gen);
 });

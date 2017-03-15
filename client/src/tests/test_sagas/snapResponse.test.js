@@ -4,6 +4,7 @@ import playRes from '../../resources/pages/play';
 import sharedRes from '../../resources/pages/shared';
 import { socketIdSelector } from '../../reducers';
 
+import { itEnds } from './common';
 import { put, select, call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 
@@ -41,11 +42,7 @@ describe('snapResponse when you win', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  itEnds(gen);
 });
 
 describe('snapResponse when someone else wins', () => {
@@ -75,11 +72,7 @@ describe('snapResponse when someone else wins', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  itEnds(gen);
 });
 
 describe('snapResponse when false snap', () => {
@@ -109,9 +102,5 @@ describe('snapResponse when false snap', () => {
     );
   });
 
-  xit('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  //TODO itEnds(gen);
 });

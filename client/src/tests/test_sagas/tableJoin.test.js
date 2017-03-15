@@ -9,6 +9,8 @@ import { snapResponse } from '../../sagas/snapResponse';
 import * as toPath from '../../routing';
 import createWebSocketConnection, * as events from '../../api/sockets';
 
+import { itEnds } from './common';
+
 const socket = {
   emit: jest.fn()
 }
@@ -36,11 +38,7 @@ describe('tableJoin', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  itEnds(gen);
 });
 
 describe('connectAsTable', () => {
@@ -59,11 +57,7 @@ describe('connectAsTable', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  itEnds(gen);
 });
 
 describe('tableBegin', () => {
@@ -81,9 +75,5 @@ describe('tableBegin', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  itEnds(gen);
 });

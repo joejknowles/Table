@@ -5,7 +5,7 @@ import { newGame, createNewGame,
 import { tableJoin } from '../../sagas/table';
 
 import * as toPath from '../../routing';
-
+import { itEnds } from './common';
 import { call, fork, takeEvery, put } from 'redux-saga/effects';
 
 const socket = {
@@ -27,11 +27,7 @@ describe('newGame', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  itEnds(gen);
 });
 
 describe('createNewGame', () => {
@@ -49,11 +45,7 @@ describe('createNewGame', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  itEnds(gen);
 });
 
 
@@ -73,11 +65,7 @@ describe('watchNewGame', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  itEnds(gen);
 });
 
 describe('dispatchNewGame', () => {
@@ -99,9 +87,5 @@ describe('dispatchNewGame', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, value: undefined }
-    );
-  });
+  itEnds(gen);
 });

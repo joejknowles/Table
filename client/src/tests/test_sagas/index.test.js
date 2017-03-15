@@ -11,6 +11,8 @@ import { tableJoin } from '../../sagas/table';
 import { watchBegin } from '../../sagas/beginGame';
 import { watchAllSocketEvents } from '../../sagas/socketEvents';
 
+import { itEnds } from './common';
+
 import { takeEvery, fork, call } from 'redux-saga/effects';
 
 const socket = jest.fn();
@@ -53,24 +55,33 @@ describe('watchJoin', () => {
       call(watchBegin, socket)
     );
   });
+
+  itEnds(gen);
 });
 
 describe('watchPlayerJoin', () => {
+  const gen = watchPlayerJoin(socket);
   it('takes every PLAYER_JOIN', () => {
     expect(
-      watchPlayerJoin(socket).next().value
+      gen.next().value
     ).toEqual(
       takeEvery('PLAYER_JOIN', playerJoin, socket)
     );
   });
+
+  itEnds(gen);
 });
 
 describe('watchTableJoin', () => {
+  const gen = watchTableJoin(socket)
   it('takes every TABLE_JOIN', () => {
     expect(
-      watchTableJoin(socket).next().value
+      gen.next().value
     ).toEqual(
       takeEvery('TABLE_JOIN', tableJoin, socket)
     );
   });
+
+
+  itEnds(gen);
 });

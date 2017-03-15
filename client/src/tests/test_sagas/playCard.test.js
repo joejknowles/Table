@@ -2,6 +2,7 @@ import { emitGameAction } from '../../sagas/play';
 
 import { gameCodeSelector } from '../../reducers';
 import { select, call } from 'redux-saga/effects';
+import { itEnds } from './common';
 
 const socket = {
   emit: jest.fn()
@@ -22,9 +23,5 @@ describe('emitGameAction', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual({
-      done: true, value: undefined
-    });
-  });
+  itEnds(gen);
 });

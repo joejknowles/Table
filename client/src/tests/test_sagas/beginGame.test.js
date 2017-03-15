@@ -2,6 +2,7 @@ import {
   watchBegin,
   requestBeginGame
 } from '../../sagas/beginGame';
+import { itEnds } from './common';
 
 import { call, takeEvery } from 'redux-saga/effects';
 
@@ -18,9 +19,5 @@ describe('watchBegin', () => {
     );
   });
 
-  it('ends', () => {
-    expect(gen.next()).toEqual(
-      { done: true, avalue: undefined }
-    );
-  });
+  itEnds(gen);
 });

@@ -4,6 +4,7 @@ import {
   dispatchSocketEvent
   } from '../../sagas/socketEvents';
 
+import { itEnds } from './common';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 const socket = jest.fn();
@@ -33,5 +34,6 @@ describe('dispatchSocketEvent', () => {
     expect(gen.next().value).toEqual(
       put({ type: 'PLAYER_ADDED', game: { playerCount: 1 } })
     );
-  })
+  });
+  itEnds(gen);
 });
