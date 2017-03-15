@@ -29,18 +29,16 @@ describe('snapping', async () => {
     await player1Browser.playCard();
     await player2Browser.playCard();
     await player1Browser.playCard();
-    await player1Browser.snap();
   }, 20000);
 
-  xit('player 1 has no cards left before snapping', async () => {
+  it('player 1 has no cards left before snapping', async () => {
     expect(
       await player1Browser.hasElementNot('.card')
     ).toBe(true);
   });
 
   it('cards return after snapping', async () => {
-
-    await sleep(2000);
+    await player1Browser.snap();
     expect(
       await player1Browser.containsText(playRes.youWin)
     ).toBe(true);
