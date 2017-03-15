@@ -1,5 +1,6 @@
 import { call, takeEvery, select, put } from 'redux-saga/effects';
 
+import { snapResponse } from './snapResponse';
 import * as toPath from '../routing';
 import { gameCodeSelector } from '../reducers';
 import * as events from '../api/sockets';
@@ -14,7 +15,8 @@ export function* playerBegin(socket, action) {
   yield put({ type: 'SET_CARD_COUNT', cardCount })
   yield takeEvery('PLAY_CARD', emitGameAction, socket);
   yield call(toPath.play);
-  yield takeEvery('SNAP', emitGameAction, socket)
+  yield takeEvery('SNAP', emitGameAction, socket);
+  yield takeEvery('SNAP_RESULT', snapResponse);
 }
 
 export function* playerJoin(socket, action) {

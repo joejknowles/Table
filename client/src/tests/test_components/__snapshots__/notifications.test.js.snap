@@ -1,0 +1,7 @@
+exports[`test component renders as before with notifications 1`] = `
+<p>
+  test notification
+</p>
+`;
+
+exports[`test component renders as before without notifications 1`] = `null`;

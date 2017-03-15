@@ -1,4 +1,5 @@
 import { playerJoin, playerBegin, playCard, emitGameAction } from '../../sagas/play';
+import { snapResponse } from '../../sagas/snapResponse';
 
 import { call, takeEvery, put } from 'redux-saga/effects';
 
@@ -70,4 +71,16 @@ describe('playerBegin', () => {
       takeEvery('SNAP', emitGameAction, socket)
     );
   });
+
+  it('takes every SNAP_RESULT action', () => {
+    expect(gen.next().value).toEqual(
+      takeEvery('SNAP_RESULT', snapResponse)
+    );
+  });
+
+  it('ends', () => {
+    expect(gen.next()).toEqual(
+      { done: true, value: undefined }
+    );
+  })
 });

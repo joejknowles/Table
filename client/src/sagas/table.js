@@ -1,5 +1,6 @@
 import { call, put, fork, takeEvery } from 'redux-saga/effects';
 
+import { snapResponse } from './snapResponse';
 import * as toPath from '../routing';
 import * as events from '../api/sockets';
 import * as actions from '../actions';
@@ -25,4 +26,5 @@ export function* tableJoin(socket, gameCode) {
 
 export function* tableBegin(socket) {
   yield call(toPath.table);
+  yield takeEvery('SNAP_RESULT', snapResponse);
 }

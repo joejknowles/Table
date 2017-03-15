@@ -6,5 +6,5 @@ exports[`test Snap renders as before 1`] = `
     }
   }
   className="snap"
-  res={undefined} />
+  res="Snap!" />
 `;

@@ -4,6 +4,7 @@ import {
   tableBegin } from '../../sagas/table';
 
 import { call, fork, takeEvery } from 'redux-saga/effects';
+import { snapResponse } from '../../sagas/snapResponse';
 
 import * as toPath from '../../routing';
 import createWebSocketConnection, * as events from '../../api/sockets';
@@ -57,6 +58,12 @@ describe('connectAsTable', () => {
       call(watchCards, socket)
     );
   });
+
+  it('ends', () => {
+    expect(gen.next()).toEqual(
+      { done: true, value: undefined }
+    );
+  });
 });
 
 describe('tableBegin', () => {
@@ -65,6 +72,18 @@ describe('tableBegin', () => {
   it('goes to table path', () => {
     expect(gen.next().value).toEqual(
       call(toPath.table)
+    );
+  });
+
+  it('takes every SNAP_RESULT action', () => {
+    expect(gen.next().value).toEqual(
+      takeEvery('SNAP_RESULT', snapResponse)
+    );
+  });
+
+  it('ends', () => {
+    expect(gen.next()).toEqual(
+      { done: true, value: undefined }
     );
   });
 });
