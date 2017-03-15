@@ -30,7 +30,6 @@ describe('snapping', async () => {
     await player1Browser.playCard();
     await player2Browser.playCard();
     await player1Browser.playCard();
-    await player2Browser.playCard();
     await player1Browser.snap();
   }, 20000);
 
