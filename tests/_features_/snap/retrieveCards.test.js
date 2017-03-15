@@ -29,16 +29,10 @@ describe('snapping', async () => {
     await player1Browser.playCard();
     await player2Browser.playCard();
     await player1Browser.playCard();
+      await player1Browser.snap();
   }, 20000);
 
-  it('player 1 has no cards left before snapping', async () => {
-    expect(
-      await player1Browser.hasElementNot('.card')
-    ).toBe(true);
-  });
-
   it('cards return after snapping', async () => {
-    await player1Browser.snap();
     expect(
       await player1Browser.hasElement('.card')
     ).toBe(true);
@@ -48,7 +42,7 @@ describe('snapping', async () => {
     expect(
       await player1Browser.hasElement('.play-card')
     ).toBe(true);
-  });
+  }, 15000);
 
   afterAll(() => {
     game.exit();
