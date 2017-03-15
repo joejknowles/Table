@@ -10,6 +10,7 @@ export function* snapResponse(action) {
     const yourId = yield select(socketIdSelector);
     if (yourId === action.snapBy) {
       yield put({ type: 'ADD_NOTIFICATION', message: res.youWin });
+      yield put({ type: 'SET_CARD_COUNT', cardCount: action.newCardCount })
     } else {
       yield put({ type: 'ADD_NOTIFICATION', message: sharedRes.snapNotification })
     }

@@ -12,7 +12,8 @@ import { delay } from 'redux-saga';
 describe('snapResponse when you win', () => {
   const action = {
     snapped: true,
-    snapBy: 'yourId'
+    snapBy: 'yourId',
+    newCardCount: 7
   }
   const gen = snapResponse(action);
 
@@ -27,6 +28,12 @@ describe('snapResponse when you win', () => {
   it('puts display message', () => {
     expect(gen.next('yourId').value).toEqual(
       put({ type: 'ADD_NOTIFICATION', message: playRes.youWin })
+    );
+  });
+
+  it('puts set card count', () => {
+    expect(gen.next('yourId').value).toEqual(
+      put({ type: 'SET_CARD_COUNT', cardCount: 7 })
     );
   });
 
