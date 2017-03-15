@@ -19,4 +19,12 @@ describe('table pile reducer', () => {
   it('adds card after ADD_CARD', () => (
     expect(tablePile([], { type: 'ADD_CARD', card: 'card'})).toEqual(['card'])
   ));
+
+  it('removes all cards after snap result where snapped=true', () => (
+    expect(tablePile(['card', 'card', 'card'], { type: 'SNAP_RESULT', snapped: true})).toEqual([])
+  ));
+
+  it('removes no cards after snap result where snapped=false', () => (
+    expect(tablePile(['card', 'card', 'card'], { type: 'SNAP_RESULT', snapped: false})).toEqual(['card', 'card', 'card'])
+  ));
 });

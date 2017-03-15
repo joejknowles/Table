@@ -9,6 +9,13 @@ export const cardCount = (state = 1, action) => {
   }
 };
 
-export const tablePile = (state = [], action) => (
-  action.type === 'ADD_CARD' ? [ ...state, action.card ] : state
-);
+export const tablePile = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_CARD':
+      return [ ...state, action.card ]
+    case 'SNAP_RESULT':
+      return action.snapped ? [] : state;
+    default:
+      return state;
+  }
+};
