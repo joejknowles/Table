@@ -1,7 +1,7 @@
 import createGame from '../setup/users/fullGame';
 import createAppStarter from '../setup/server';
 import playRes from '../../../client/src/resources/pages/play';
-import tableRes from '../../../client/src/resources/pages/table';
+import sharedRes from '../../../client/src/resources/pages/shared';
 jest.mock('lodash.shuffle', () => jest.fn((cards) => cards));
 jest.mock('../../../app/game/cardSpecies', () => [
   { id: 2, suit: 'HEARTS', rank: '2' },
@@ -38,13 +38,13 @@ describe('snapping', async () => {
 
   it('table shows Snap happened', async () => {
     expect(
-      await tableBrowser.containsText(tableRes.snap)
+      await tableBrowser.containsText(sharedRes.snapNotification)
     ).toBe(true);
   });
 
   it('other player shows snap happened', async () => {
     expect(
-      await player2Browser.containsText(tableRes.snap)
+      await player2Browser.containsText(sharedRes.snapNotification)
     ).toBe(true);
   });
 
