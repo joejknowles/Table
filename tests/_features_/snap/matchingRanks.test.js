@@ -7,6 +7,8 @@ jest.mock('../../../app/game/cardSpecies', () => [
   { id: 2, suit: 'HEARTS', rank: '2' },
   { id: 1, suit: 'HEARTS', rank: '5' },
   { id: 3, suit: 'CLUBS', rank: 'A' },
+  { id: 3, suit: 'CLUBS', rank: 'A' },
+  { id: 3, suit: 'CLUBS', rank: 'A' },
   { id: 4, suit: 'HEARTS', rank: 'A' }
 ]);
 
@@ -25,6 +27,8 @@ describe('snapping', async () => {
       tableBrowser,
       players: [ player1Browser, player2Browser ]
     } = game);
+    await player1Browser.playCard();
+    await player2Browser.playCard();
     await player1Browser.playCard();
     await player2Browser.playCard();
     await player1Browser.snap();
