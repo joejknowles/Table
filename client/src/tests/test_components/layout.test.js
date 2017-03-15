@@ -6,6 +6,6 @@ import ReactTestUtils from 'react-addons-test-utils';
 const shallowRenderer = ReactTestUtils.createRenderer();
 
 it('component renders as before', () => {
-  const component = shallowRenderer.render(<Component />);
+  const component = shallowRenderer.render(<Component >children</Component>);
   expect(component).toMatchSnapshot();
 });
