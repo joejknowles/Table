@@ -20,7 +20,8 @@ for (let suitNo = 0; suitNo < 4; suitNo++) {
     const card = {
       id: rankNo + (suitNo * 13),
       suit,
-      rank
+      rank,
+      img: `cards/${ rank }-${ suit }.svg`
     };
     deck.push(card);
   }
