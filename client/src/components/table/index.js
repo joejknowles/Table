@@ -8,8 +8,8 @@ export const Table = ({ topCard }) => (
   <Layout>
     <div className="pile">
       { topCard ?
-        <div className="card">
-          { `${ topCard.rank } ${ topCard.suit }` }
+        <div >
+          <img className="card" src={ topCard.img } />
         </div> : <div className="noCards" /> }
     </div>
   </Layout>
