@@ -28,7 +28,8 @@
 }
 
 .card {
-  border-radius: 2.1vh;
+  border: solid 0.3em;
+  border-radius: 4vh;
   -webkit-box-shadow: 4px 4px 36px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 4px 4px 36px 0px rgba(0,0,0,0.75);
   box-shadow: 4px 4px 36px 0px rgba(0,0,0,0.75);
