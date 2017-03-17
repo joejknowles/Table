@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import res from '../../resources/pages/play';
 
-import { myTurnSelector } from '../../selectors';
 import { cardCountSelector } from '../../reducers';
 
 export const CardCount = ({ count }) => (

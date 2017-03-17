@@ -1,6 +1,5 @@
 import React from 'react';
 import { ImageDispatch } from '../common/buttons';
-import res from '../../resources/pages/play';
 
 export default () => (
   <ImageDispatch
