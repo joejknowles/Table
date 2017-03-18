@@ -19,9 +19,12 @@ exports[`test Hand renders as before on turn 1`] = `
 exports[`test Hand renders as before with no cards 1`] = `
 <div
   className="pile">
-  <p
-    className="no-cards-message">
-    No more cards
-  </p>
+  <div
+    className="noCards">
+    <p
+      className="no-cards-message">
+      No more cards
+    </p>
+  </div>
 </div>
 `;
