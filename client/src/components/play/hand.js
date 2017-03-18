@@ -13,9 +13,11 @@ export const Hand = ({ myTurn, cardCount }) => (
       <div className='card'>
         { myTurn && <PlayCardButton /> }
       </div> :
-      <p className='no-cards-message'>
-        { res.noCardsMessage }
-      </p>
+      <div className="noCards">
+        <p className='no-cards-message'>
+          { res.noCardsMessage }
+        </p>
+      </div>
     }
   </div>
 );
