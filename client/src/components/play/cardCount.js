@@ -5,7 +5,7 @@ import res from '../../resources/pages/play';
 
 import { cardCountSelector } from '../../reducers';
 
-export const CardCount = ({ count }) => (
+export const CardCount = ({ count, myTurn }) => (
   <div className="card-count">
     { res.cardCount(count) }
   </div>

@@ -9,7 +9,7 @@ export const Table = ({ topCard }) => (
     <div className="pile">
       { topCard ?
         <div >
-          <img className="card" alt={ `${topCard.rank} ${ topCard.suit }` } src={ topCard.img } />
+          <img className="playing-card" alt={ `${topCard.rank} ${ topCard.suit }` } src={ topCard.img } />
         </div> : <div className="noCards" /> }
     </div>
   </Layout>

@@ -33,7 +33,7 @@ describe('clicking the card on the players browser', async () => {
 
   it('displays the card on the table browser', async () => {
     expect(
-      await tableBrowser.hasElement('.card')
+      await tableBrowser.hasElement('.playing-card')
     ).toBe(true);
   });
 

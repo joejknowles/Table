@@ -1,11 +1,12 @@
 exports[`test PlayCardButton renders as before 1`] = `
-<Connect(DumbImageDispatch)
-  action={
-    Object {
-      "type": "PLAY_CARD",
+<div
+  className="pile">
+  <Connect(Component)
+    action={
+      Object {
+        "type": "PLAY_CARD",
+      }
     }
-  }
-  className="play-card"
-  src="cards/bb.svg"
-  type="image" />
+    className="play-card playing-card face-down" />
+</div>
 `;

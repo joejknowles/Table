@@ -5,7 +5,7 @@ exports[`test component renders as before with top card 1`] = `
     <div>
       <img
         alt="undefined undefined"
-        className="card"
+        className="playing-card"
         src={undefined} />
     </div>
   </div>

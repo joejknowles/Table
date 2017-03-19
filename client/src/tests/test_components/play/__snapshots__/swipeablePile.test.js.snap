@@ -1,0 +1,25 @@
+exports[`test SwipeablePile renders as before 1`] = `
+<SwipeCards
+  className="pile">
+  <Card
+    onSwipeTop={undefined}>
+    <div
+      className="face-down" />
+  </Card>
+  <Card>
+    <div
+      className="face-down" />
+  </Card>
+</SwipeCards>
+`;
+
+exports[`test SwipeablePile renders as before with one card 1`] = `
+<SwipeCards
+  className="pile">
+  <Card
+    onSwipeTop={undefined}>
+    <div
+      className="face-down" />
+  </Card>
+</SwipeCards>
+`;

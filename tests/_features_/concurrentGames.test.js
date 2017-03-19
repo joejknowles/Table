@@ -18,13 +18,13 @@ describe('concurrent games', async () => {
 
   it('table shows card in first game', async () => {
     expect(
-      await game1.tableBrowser.hasElement('.card')
+      await game1.tableBrowser.hasElement('.playing-card')
     ).toBe(true);
   }, 15000);
 
   it('table doesn\'t show card in second game', async () => {
     expect(
-      await game2.tableBrowser.hasElementNot('.card')
+      await game2.tableBrowser.hasElementNot('.playing-card')
     ).toBe(true);
   }, 15000);
 

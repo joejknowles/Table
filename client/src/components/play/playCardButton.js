@@ -1,11 +1,11 @@
 import React from 'react';
-import { ImageDispatch } from '../common/buttons';
+import { DispatchButton } from '../common/buttons';
 
 export default () => (
-  <ImageDispatch
-    className='play-card'
-    action={ { type: 'PLAY_CARD' } }
-    type='image'
-    src="cards/bb.svg"
-  />
+  <div className='pile'>
+    <DispatchButton
+      className='play-card playing-card face-down'
+      action={ { type: 'PLAY_CARD' } }
+    />
+  </div>
 );

@@ -29,14 +29,8 @@ describe('snapping', async () => {
     await player1Browser.playCard();
     await player2Browser.playCard();
     await player1Browser.playCard();
-      await player1Browser.snap();
+    await player1Browser.snap();
   }, 20000);
-
-  it('cards return after snapping', async () => {
-    expect(
-      await player1Browser.hasElement('.card')
-    ).toBe(true);
-  }, 15000);
 
   it('1st player goes again after collecting cards', async () => {
     expect(

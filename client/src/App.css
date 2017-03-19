@@ -2,15 +2,23 @@
   text-align: center;
 }
 
-.pile {
+.pile, .card {
   margin: auto;
   width: 50vh;
   height: 70vh;
+}
+
+.pile, #cards {
   margin-top: 10vh;
 }
 
+.card {
+  position: absolute;
+  background-color: white;
+}
+
 @media screen and (max-width: 39.9375em) {
-  .pile {
+  .pile, .card {
     width: 40vh;
     height: 56vh;
   }
@@ -22,12 +30,12 @@
   left: 5px;
 }
 
-.card, .noCards {
+.playing-card, .noCards, #cards {
   width: 100%;
   height: 100%;
 }
 
-.card {
+.playing-card, .card {
   border: solid 0.3em;
   border-radius: 4vh;
   -webkit-box-shadow: 4px 4px 36px 0px rgba(0,0,0,0.75);
@@ -49,6 +57,13 @@
   outline-color: grey;
 }
 
+.face-down {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-image: url('/cards/rb.svg');
+}
+
 .btn:active {
   -webkit-box-shadow: inset 4px 4px 10px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: inset 4px 4px 10px 0px rgba(0,0,0,0.75);
@@ -58,6 +73,5 @@
 .play-card {
   width: 100%;
   height: 100%;
-  border: none;
   margin: 0;
 }

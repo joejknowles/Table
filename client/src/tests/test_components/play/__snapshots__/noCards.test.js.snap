@@ -1,0 +1,12 @@
+exports[`test noCards renders as before 1`] = `
+<div
+  className="pile">
+  <div
+    className="noCards">
+    <p
+      className="no-cards-message">
+      No more cards
+    </p>
+  </div>
+</div>
+`;

@@ -1,26 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import PlayCardButton from './playCardButton';
-import res from '../../resources/pages/play';
+import PlayablePile from './playablePile';
+import StaticPile from './staticPile';
+import NoCards from './noCards';
 
-import { myTurnSelector } from '../../selectors';
 import { cardCountSelector } from '../../reducers';
+import { myTurnSelector } from '../../selectors';
 
-export const Hand = ({ myTurn, cardCount }) => (
-  <div className="pile">
-    { cardCount > 0 ?
-      <div className='card'>
-        { myTurn && <PlayCardButton /> }
-      </div> :
-      <div className="noCards">
-        <p className='no-cards-message'>
-          { res.noCardsMessage }
-        </p>
-      </div>
-    }
-  </div>
-);
+export const Hand = ({ cardCount, myTurn }) => {
+  if (cardCount > 0) {
+    return myTurn ? <PlayablePile /> : <StaticPile />;
+  }
+  return <NoCards />
+};
 
 const mapStateToProps = (state) => ({
   cardCount: cardCountSelector(state),
