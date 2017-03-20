@@ -6,7 +6,7 @@ exports[`test PlayerJoinButton renders as before 1`] = `
       "type": "PLAYER_JOIN",
     }
   }
-  className="player-join-button"
+  className="btn player-join-button"
   res="Join as player" />
 `;
 
@@ -17,6 +17,6 @@ exports[`test TableJoinButton renders as before 1`] = `
       "type": "TABLE_JOIN",
     }
   }
-  className="table-join-button"
+  className="btn table-join-button"
   res="Join as table" />
 `;

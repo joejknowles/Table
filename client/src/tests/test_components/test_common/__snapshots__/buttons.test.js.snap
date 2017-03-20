@@ -1,6 +1,6 @@
 exports[`test DispatchButton renders as before 1`] = `
 <button
-  className="btn test class"
+  className="test class"
   onClick={[Function]}>
   test res
 </button>

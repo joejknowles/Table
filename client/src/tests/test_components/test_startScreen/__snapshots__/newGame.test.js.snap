@@ -6,7 +6,7 @@ exports[`test component renders as before 1`] = `
         "type": "REQUEST_NEW_GAME",
       }
     }
-    className="new-game"
+    className="btn new-game"
     res="Start a New Game" />
 </div>
 `;

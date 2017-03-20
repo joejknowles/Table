@@ -16,7 +16,7 @@ exports[`test component renders as before with 1 player 1`] = `
         "type": "REQUEST_BEGIN_GAME",
       }
     }
-    className="begin-button"
+    className="btn begin-button"
     res="Begin Game" />
 </Unknown>
 `;
@@ -39,7 +39,7 @@ exports[`test component renders as before with 2 players 1`] = `
         "type": "REQUEST_BEGIN_GAME",
       }
     }
-    className="begin-button"
+    className="btn begin-button"
     res="Begin Game" />
 </Unknown>
 `;
@@ -62,7 +62,7 @@ exports[`test component renders as before with no players 1`] = `
         "type": "REQUEST_BEGIN_GAME",
       }
     }
-    className="begin-button"
+    className="btn begin-button"
     res="Begin Game" />
 </Unknown>
 `;

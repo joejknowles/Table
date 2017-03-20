@@ -5,6 +5,6 @@ exports[`test Snap renders as before 1`] = `
       "type": "SNAP",
     }
   }
-  className="snap"
+  className="btn snap"
   res="Snap!" />
 `;
