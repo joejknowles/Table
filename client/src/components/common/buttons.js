@@ -7,7 +7,7 @@ export const DumbDispatchButton = ({
 }) => (
   <button
     onClick={ () => dispatch(action) }
-    className={ 'btn ' + className }
+    className={ className }
     >
     { res }
   </button>

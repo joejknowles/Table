@@ -9,7 +9,7 @@ export default () => (
   <div>
     <DispatchButton
       res={ res.newGameButton }
-      className="new-game"
+      className="btn new-game"
       action={ actions.requestNewGame }
     />
   </div>

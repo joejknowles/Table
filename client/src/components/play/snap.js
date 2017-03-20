@@ -5,7 +5,7 @@ import res from '../../resources/pages/play';
 export default ({ dispatch }) => (
   <DispatchButton
     res={ res.snap }
-    className='snap'
+    className='btn snap'
     action={ { type: 'SNAP' } }
   />
 );

@@ -8,7 +8,7 @@ import * as actions from '../../actions'
 export const TableJoinButton = () => (
   <DispatchButton
     res={ res.tableJoinButton }
-    className="table-join-button"
+    className="btn table-join-button"
     action={ actions.joinTable }
   />
 );
@@ -16,7 +16,7 @@ export const TableJoinButton = () => (
 export const PlayerJoinButton = () => (
   <DispatchButton
     res={ res.playerJoinButton }
-    className="player-join-button"
+    className="btn player-join-button"
     action={ actions.joinPlayer() }
   />
 );

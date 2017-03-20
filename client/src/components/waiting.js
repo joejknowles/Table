@@ -14,7 +14,7 @@ export const Waiting = ({ code, playerCount }) => (
     <DispatchButton
       res={ res.begin }
       action={ { type: 'REQUEST_BEGIN_GAME' } }
-      className='begin-button'
+      className='btn begin-button'
     />
   </Layout>
 );
