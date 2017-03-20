@@ -11,17 +11,17 @@ const swipeableCard = (playCard) => (
   </Card>
 );
 
+const twoCards = (playCard) => (
+  [
+    swipeableCard(playCard),
+    <Card key='bottom' children={ <div className='face-down'/> } />
+  ]
+);
+
 export const SwipeablePile = ({ playCard, cardCount }) => (
   <Cards className="pile">
     {
-      cardCount > 1 ?
-      [
-      swipeableCard(playCard)
-    ,
-    <Card key='bottom' children={ <div className='face-down'/> } />
-    ] : [
-        swipeableCard(playCard)
-      ]
+      cardCount > 1 ? twoCards(playCard) : [swipeableCard(playCard)]
     }
   </Cards>
 );
