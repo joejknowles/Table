@@ -30,6 +30,8 @@ const mapStateToProps = (state) => ({
   cardCount: cardCountSelector(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({ playCard: () => dispatch({ type: 'PLAY_CARD' }) })
+const mapDispatchToProps = (dispatch) => ({
+  playCard: () => dispatch({ type: 'PLAY_CARD' })
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SwipeablePile);
